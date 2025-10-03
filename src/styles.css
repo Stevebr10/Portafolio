@@ -1,1 +1,206 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import 'aos/dist/aos.css';
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Colores personalizados del FC Barcelona */
+  --color-barca-blue: #004D98;
+  --color-barca-red: #A50044;
+  --color-barca-gold: #EDBB00;
+  --color-barca-dark: #0a0e27;
+  --color-barca-dark-secondary: #1a1d29;
+  --color-barca-light: #f8f9fa;
+  
+  /* Fuentes personalizadas */
+  --font-family-barca: 'Poppins', sans-serif;
+  
+  /* Espaciados personalizados */
+  --spacing-section: 6rem;
+  
+  /* Sombras personalizadas */
+  --shadow-barca: 0 20px 40px rgba(165, 0, 68, 0.3);
+  --shadow-barca-hover: 0 10px 30px rgba(165, 0, 68, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-barca);
+  background: linear-gradient(135deg, var(--color-barca-dark) 0%, #0d1126 100%);
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Gradient backgrounds estilo Barça */
+.gradient-barca {
+  background: linear-gradient(135deg, var(--color-barca-blue) 0%, var(--color-barca-red) 100%);
+}
+
+.gradient-barca-reverse {
+  background: linear-gradient(135deg, var(--color-barca-red) 0%, var(--color-barca-blue) 100%);
+}
+
+.gradient-text-hero {
+  background: linear-gradient(135deg, var(--color-barca-blue) 0%, var(--color-barca-red) 50%, var(--color-barca-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Efectos de hover estilo Barça */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-barca);
+}
+
+/* Botones estilo Barça */
+.btn-barca {
+  background: linear-gradient(135deg, var(--color-barca-blue) 0%, var(--color-barca-red) 100%);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-barca:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-barca-hover);
+}
+
+.btn-outline {
+  color: var(--color-barca-gold);
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border: 2px solid var(--color-barca-gold);
+  background: transparent;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-outline:hover {
+  background: var(--color-barca-gold);
+  color: var(--color-barca-dark);
+  transform: scale(1.05);
+}
+
+/* Social Icons */
+.social-icon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--color-barca-blue);
+  color: var(--color-barca-blue);
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: linear-gradient(135deg, var(--color-barca-blue) 0%, var(--color-barca-red) 100%);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-5px);
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-barca-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--color-barca-blue), var(--color-barca-red));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-barca-gold);
+}
+
+/* Animaciones personalizadas */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Cards estilo Barça */
+.card-barca {
+  background: rgba(26, 29, 41, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 77, 152, 0.3);
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.3s ease;
+}
+
+.card-barca:hover {
+  border-color: var(--color-barca-blue);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 77, 152, 0.4);
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-barca-blue) 0%, var(--color-barca-red) 50%, var(--color-barca-gold) 100%);
+  border-radius: 2px;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+}
