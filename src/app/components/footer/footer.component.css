@@ -1,0 +1,27 @@
+.gradient-text-hero {
+  background: linear-gradient(135deg, #004D98 0%, #A50044 50%, #EDBB00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.social-icon-footer {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 77, 152, 0.2);
+  color: var(--color-barca-blue);
+  font-size: 18px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 77, 152, 0.3);
+}
+
+.social-icon-footer:hover {
+  background: linear-gradient(135deg, var(--color-barca-blue) 0%, var(--color-barca-red) 100%);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-5px) rotate(5deg);
+}

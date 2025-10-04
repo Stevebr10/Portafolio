@@ -203,3 +203,51 @@ body {
     font-size: 2rem;
   }
 }
+
+/* Utility Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Responsive Container */
+@media (max-width: 1280px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+/* Smooth Transitions */
+* {
+  transition-property: color, background-color, border-color, opacity, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Selection Color */
+::selection {
+  background-color: var(--color-barca-gold);
+  color: var(--color-barca-dark);
+}
+
+::-moz-selection {
+  background-color: var(--color-barca-gold);
+  color: var(--color-barca-dark);
+}
+
+/* Focus Visible */
+*:focus-visible {
+  outline: 2px solid var(--color-barca-gold);
+  outline-offset: 2px;
+}

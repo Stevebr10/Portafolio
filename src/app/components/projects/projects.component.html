@@ -1,1 +1,71 @@
-<p>projects works!</p>
+<section id="projects" class="py-24 bg-barca-dark relative overflow-hidden">
+  <!-- Background Effects -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute w-96 h-96 bg-barca-blue/5 rounded-full blur-3xl top-0 right-0"></div>
+    <div class="absolute w-96 h-96 bg-barca-red/5 rounded-full blur-3xl bottom-0 left-0"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <!-- Section Title -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="section-title gradient-text-hero inline-block">
+        Mis Proyectos
+      </h2>
+      <p class="text-gray-400 text-lg mt-4 max-w-2xl mx-auto">
+        Una selección de proyectos que demuestran mi pasión por el desarrollo y el diseño.
+      </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex justify-center flex-wrap gap-3 mb-12" data-aos="fade-up">
+      <button *ngFor="let filter of filters"
+              (click)="filterProjects(filter)"
+              [ngClass]="{'btn-barca': selectedFilter === filter, 'btn-outline': selectedFilter !== filter}"
+              class="text-sm">
+        <i [class]="getFilterIcon(filter) + ' mr-2'"></i>
+        {{ filter }}
+      </button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Project Card -->
+      <div *ngFor="let project of displayedProjects; let i = index" 
+           class="card-barca group overflow-hidden project-card" 
+           data-aos="fade-up" 
+           [attr.data-aos-delay]="i * 100">
+
+        <div class="relative w-full h-56 rounded-lg overflow-hidden mb-6">
+          <img [src]="project.image" [alt]="project.title" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+            <a *ngIf="project.demoUrl" [href]="project.demoUrl" target="_blank" class="social-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+            <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank" class="social-icon">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+          <span *ngIf="project.featured" class="absolute top-3 right-3 bg-barca-gold text-barca-dark text-xs font-bold px-3 py-1 rounded-full">Destacado</span>
+        </div>
+
+        <h3 class="text-xl font-bold text-white mb-2">{{ project.title }}</h3>
+        
+        <!-- Párrafo corregido: se quitó h-20 y se usó la clase de Tailwind 'line-clamp-3' -->
+        <p class="text-gray-400 text-sm mb-4 line-clamp-3">{{ project.description }}</p>
+
+        <div class="flex flex-wrap gap-2 mt-auto pt-4">
+          <span *ngFor="let tech of project.technologies" class="px-3 py-1 bg-barca-dark-secondary border border-barca-blue/30 rounded-full text-xs text-gray-300">
+            {{ tech }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load More Button -->
+    <div *ngIf="hasMoreProjects" class="text-center mt-16" data-aos="fade-up">
+      <button (click)="loadMore()" class="btn-barca">
+        Cargar Más Proyectos
+      </button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+.filter-btn {
+  color: #9ca3af;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--color-barca-blue) 0%, var(--color-barca-red) 100%);
+  color: white;
+}
+
+.filter-btn:hover:not(.active) {
+  color: var(--color-barca-gold);
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shine {
+  animation: shine 2s infinite;
+}

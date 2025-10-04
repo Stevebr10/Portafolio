@@ -1,1 +1,115 @@
-<p>skills works!</p>
+<section id="skills" class="py-24 bg-barca-dark-secondary relative overflow-hidden">
+  <!-- Background Effects -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute w-96 h-96 bg-barca-blue/5 rounded-full blur-3xl top-1/4 left-0"></div>
+    <div class="absolute w-96 h-96 bg-barca-red/5 rounded-full blur-3xl bottom-1/4 right-0"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <!-- Section Title -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="section-title gradient-text-hero inline-block">
+        Habilidades Técnicas
+      </h2>
+      <p class="text-gray-400 text-lg mt-4 max-w-2xl mx-auto">
+        Dominio de tecnologías modernas para crear soluciones web robustas y escalables
+      </p>
+    </div>
+
+    <!-- Skills Filter -->
+    <div class="flex justify-center mb-12" data-aos="fade-up">
+      <div class="inline-flex bg-barca-dark border border-barca-blue/30 rounded-full p-2">
+        <button *ngFor="let category of categories"
+                (click)="filterSkills(category)"
+                [class.active]="selectedCategory === category"
+                class="filter-btn px-6 py-2 rounded-full text-sm font-medium transition-all duration-300">
+          {{ category.charAt(0).toUpperCase() + category.slice(1) }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Skill Card -->
+      <div *ngFor="let skill of filteredSkills; let i = index" 
+           class="card-barca"
+           [attr.data-aos]="'fade-up'"
+           [attr.data-aos-delay]="i * 100">
+        
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-barca-blue/30 to-barca-red/30 rounded-lg flex items-center justify-center text-2xl">
+              <i [class]="skill.icon"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-white">{{ skill.name }}</h3>
+              <p class="text-sm text-gray-500">{{ getLevelText(skill.level) }}</p>
+            </div>
+          </div>
+          <span class="text-2xl font-bold text-barca-gold">{{ skill.level }}%</span>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="relative w-full h-3 bg-barca-dark rounded-full overflow-hidden">
+          <div class="absolute top-0 left-0 h-full rounded-full transition-all duration-1000 ease-out"
+               [style.width.%]="skill.animatedLevel"
+               [class]="getProgressBarClass(skill.level)">
+            <!-- Shine Effect -->
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Skills / Tools -->
+    <div class="mt-20" data-aos="fade-up">
+      <h3 class="text-2xl font-bold text-center text-white mb-8">
+        Otras Herramientas y Tecnologías
+      </h3>
+      <div class="flex flex-wrap justify-center gap-4">
+        <div *ngFor="let tool of tools"
+             class="px-6 py-3 bg-barca-dark border border-barca-blue/30 rounded-full hover:border-barca-gold transition-all duration-300 group">
+          <span class="text-gray-300 group-hover:text-barca-gold transition-colors duration-300">
+            <i [class]="tool.icon + ' mr-2'"></i>
+            {{ tool.name }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="grid md:grid-cols-4 gap-6 mt-20" data-aos="fade-up">
+      <div class="card-barca text-center">
+        <div class="w-16 h-16 bg-barca-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-code text-barca-blue text-2xl"></i>
+        </div>
+        <p class="text-3xl font-bold text-barca-gold mb-2">{{ stats.linesOfCode }}</p>
+        <p class="text-gray-400 text-sm">Líneas de Código</p>
+      </div>
+
+      <div class="card-barca text-center">
+        <div class="w-16 h-16 bg-barca-red/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-project-diagram text-barca-red text-2xl"></i>
+        </div>
+        <p class="text-3xl font-bold text-barca-gold mb-2">{{ stats.projects }}</p>
+        <p class="text-gray-400 text-sm">Proyectos Completados</p>
+      </div>
+
+      <div class="card-barca text-center">
+        <div class="w-16 h-16 bg-barca-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-users text-barca-gold text-2xl"></i>
+        </div>
+        <p class="text-3xl font-bold text-barca-gold mb-2">{{ stats.clients }}</p>
+        <p class="text-gray-400 text-sm">Clientes Satisfechos</p>
+      </div>
+
+      <div class="card-barca text-center">
+        <div class="w-16 h-16 bg-barca-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-trophy text-barca-blue text-2xl"></i>
+        </div>
+        <p class="text-3xl font-bold text-barca-gold mb-2">{{ stats.awards }}</p>
+        <p class="text-gray-400 text-sm">Premios Ganados</p>
+      </div>
+    </div>
+  </div>
+</section>

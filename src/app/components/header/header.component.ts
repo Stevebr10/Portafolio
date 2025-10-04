@@ -11,9 +11,14 @@
 // }
 import { Component, HostListener } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { CommonModule } from '@angular/common'; // <-- 1. IMPORTA CommonModule
 
 @Component({
   selector: 'app-header',
+  standalone: true, // <-- 2. AÑADE standalone: true
+  imports: [
+    CommonModule // <-- 3. AÑADE CommonModule a los imports
+  ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
   animations: [

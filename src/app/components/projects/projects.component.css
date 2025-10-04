@@ -1,0 +1,72 @@
+/* .project-filter-btn {
+  background: transparent;
+  color: #9ca3af;
+  border: 2px solid rgba(0, 77, 152, 0.3);
+  cursor: pointer;
+}
+
+.project-filter-btn:hover {
+  color: var(--color-barca-gold);
+  border-color: var(--color-barca-gold);
+  transform: translateY(-2px);
+}
+
+.project-filter-btn.active {
+  background: linear-gradient(135deg, var(--color-barca-blue) 0%, var(--color-barca-red) 100%);
+  color: white;
+  border-color: transparent;
+}
+
+.project-card {
+  background: transparent;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+} */
+
+.project-filter-btn {
+  background: transparent;
+  color: #9ca3af;
+  border: 2px solid rgba(0, 77, 152, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.project-filter-btn:hover {
+  color: var(--color-barca-gold);
+  border-color: var(--color-barca-gold);
+  transform: translateY(-2px);
+}
+
+.project-filter-btn.active {
+  background: linear-gradient(135deg, var(--color-barca-blue) 0%, var(--color-barca-red) 100%);
+  color: white;
+  border-color: transparent;
+}
+
+.project-card {
+  /* Se aplica flexbox para alinear las tecnologías al final de la tarjeta */
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+}
+
+/* No es necesario definir la clase '.line-clamp-3' aquí.
+  Tailwind CSS la crea automáticamente cuando usas la clase 'line-clamp-3' en tu HTML.
+  Asegúrate de que el plugin de line-clamp esté habilitado en tu tailwind.config.js si usas una versión anterior a la 3.0.
+  (En versiones recientes, está incluido por defecto).
+*/

@@ -1,1 +1,144 @@
-<p>about works!</p>
+<section id="about" class="py-24 relative overflow-hidden">
+  <!-- Background Effects -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute w-96 h-96 bg-barca-red/10 rounded-full blur-3xl top-0 right-0"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <!-- Section Title -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="section-title gradient-text-hero inline-block">
+        Sobre Mí
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Image Side -->
+      <div class="relative" data-aos="fade-right">
+        <div class="relative w-full max-w-md mx-auto">
+          <!-- Main Image Container -->
+          <div class="relative w-full aspect-square rounded-2xl overflow-hidden border-4 border-barca-blue/30 hover-lift">
+            <!-- Placeholder - Reemplaza con tu imagen -->
+            <div class="w-full h-full bg-gradient-to-br from-barca-blue/30 to-barca-red/30 flex items-center justify-center">
+              <i class="fas fa-user text-9xl text-barca-gold/50"></i>
+            </div>
+          </div>
+          
+          <!-- Decorative Elements -->
+          <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-barca-gold/20 rounded-full blur-2xl"></div>
+          <div class="absolute -top-6 -left-6 w-24 h-24 bg-barca-blue/20 rounded-full blur-2xl"></div>
+          
+          <!-- Stats Cards -->
+          <div class="absolute -bottom-8 -left-8 bg-barca-dark-secondary border border-barca-blue/30 rounded-xl p-4 backdrop-blur-md">
+            <div class="text-center">
+              <p class="text-3xl font-bold text-barca-gold">{{ yearsOfExperience }}+</p>
+              <p class="text-sm text-gray-400">Años de Experiencia</p>
+            </div>
+          </div>
+          
+          <div class="absolute -top-8 -right-8 bg-barca-dark-secondary border border-barca-red/30 rounded-xl p-4 backdrop-blur-md">
+            <div class="text-center">
+              <p class="text-3xl font-bold text-barca-gold">{{ completedProjects }}+</p>
+              <p class="text-sm text-gray-400">Proyectos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Side -->
+      <div class="space-y-6" data-aos="fade-left">
+        <h3 class="text-3xl md:text-4xl font-bold text-white">
+          Desarrollador Full Stack <span class="text-barca-gold">Apasionado</span>
+        </h3>
+        
+        <p class="text-gray-400 text-lg leading-relaxed">
+          Soy un desarrollador full stack con más de {{ yearsOfExperience }} años de experiencia 
+          creando aplicaciones web modernas y escalables. Me especializo en transformar ideas 
+          complejas en soluciones digitales elegantes y funcionales.
+        </p>
+        
+        <p class="text-gray-400 text-lg leading-relaxed">
+          Mi enfoque se centra en escribir código limpio, mantenible y eficiente, siempre 
+          buscando las mejores prácticas y tecnologías más recientes para entregar productos 
+          de alta calidad.
+        </p>
+
+        <!-- Info Cards -->
+        <div class="grid grid-cols-2 gap-4 pt-4">
+          <div class="card-barca">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-barca-blue/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-envelope text-barca-blue text-xl"></i>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase">Email</p>
+                <p class="text-sm text-white font-medium">tuemail.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-barca">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-barca-red/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-map-marker-alt text-barca-red text-xl"></i>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase">Ubicación</p>
+                <p class="text-sm text-white font-medium">Tu Ciudad, País</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-barca">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-barca-gold/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-briefcase text-barca-gold text-xl"></i>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase">Experiencia</p>
+                <p class="text-sm text-white font-medium">{{ yearsOfExperience }}+ Años</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-barca">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-barca-blue/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-graduation-cap text-barca-blue text-xl"></i>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase">Educación</p>
+                <p class="text-sm text-white font-medium">Ing. Software</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap gap-4 pt-6">
+          <a href="#contact">
+            <button class="btn-barca">Trabajemos Juntos</button>
+          </a>
+          <a href="/assets/cv.pdf" download>
+            <button class="btn-outline">
+              <i class="fas fa-download mr-2"></i>
+              Descargar CV
+            </button>
+          </a>
+        </div>
+
+        <!-- Interests/Hobbies -->
+        <div class="pt-6">
+          <h4 class="text-xl font-semibold text-white mb-4">Intereses</h4>
+          <div class="flex flex-wrap gap-3">
+            <span *ngFor="let interest of interests" 
+                  class="px-4 py-2 bg-barca-dark-secondary border border-barca-blue/30 rounded-full text-sm text-gray-300 hover:border-barca-gold hover:text-barca-gold transition-all duration-300">
+              <i [class]="interest.icon + ' mr-2'"></i>
+              {{ interest.name }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

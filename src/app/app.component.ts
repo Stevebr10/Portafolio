@@ -37,7 +37,7 @@
 // src/app/app.component.ts
 
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+//import { RouterOutlet } from '@angular/router';
 import * as AOS from 'aos';
 
 // Importa todos los componentes que vas a usar
@@ -54,8 +54,8 @@ import { FooterComponent } from './components/footer/footer.component';
   selector: 'app-root',
   standalone: true, // Asegúrate de que tu componente sea standalone
   imports: [
-    RouterOutlet,
-    // Añade todos tus componentes aquí
+    //RouterOutlet,
+    // Añade todos tus componentes aquí sss
     HeaderComponent,
     HeroComponent,
     AboutComponent,
