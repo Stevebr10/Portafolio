@@ -1,1 +1,96 @@
-<p>hero works!</p>
+<section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+  <!-- Background Effects -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute w-96 h-96 bg-barca-blue/20 rounded-full blur-3xl -top-48 -left-48 animate-pulse"></div>
+    <div class="absolute w-96 h-96 bg-barca-red/20 rounded-full blur-3xl -bottom-48 -right-48 animate-pulse" style="animation-delay: 1s;"></div>
+    <div class="absolute w-64 h-64 bg-barca-gold/10 rounded-full blur-3xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Text Content -->
+      <div class="text-left space-y-6" data-aos="fade-right">
+        <h2 class="text-barca-gold text-xl md:text-2xl font-semibold">
+          Hola, soy
+        </h2>
+        <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+          <span class="gradient-text-hero">Tu Nombre</span>
+        </h1>
+        <h3 class="text-2xl md:text-4xl text-gray-300 font-light">
+          Desarrollador <span class="text-barca-gold font-semibold">Full Stack</span>
+        </h3>
+        <p class="text-gray-400 text-lg leading-relaxed max-w-xl">
+          Creando experiencias web excepcionales con código limpio y diseño moderno.
+          Especializado en <span class="text-barca-blue font-semibold">Angular</span>, 
+          <span class="text-barca-blue font-semibold">React</span> y 
+          <span class="text-barca-blue font-semibold">Node.js</span>.
+        </p>
+        
+        <div class="flex flex-wrap gap-4 pt-4">
+          <a href="#projects">
+            <button class="btn-barca">Ver Proyectos</button>
+          </a>
+          <a href="/assets/cv.pdf" download>
+            <button class="btn-outline">Descargar CV</button>
+          </a>
+        </div>
+
+        <!-- Social Links -->
+        <div class="flex gap-6 pt-4">
+          <a href="https://github.com/tu-usuario" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="social-icon"
+             aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/tu-usuario" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="social-icon"
+             aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://twitter.com/tu-usuario" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="social-icon"
+             aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="mailto:tu@email.com" 
+             class="social-icon"
+             aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Image/Animation -->
+      <div class="relative" data-aos="fade-left" data-aos-delay="200">
+        <div class="relative w-full h-96 md:h-[500px]">
+          <!-- Placeholder - Reemplaza con tu imagen -->
+          <div class="w-full h-full bg-gradient-to-br from-barca-blue/20 to-barca-red/20 rounded-2xl flex items-center justify-center hover-lift border border-barca-blue/30">
+            <div class="text-center">
+              <i class="fas fa-code text-9xl text-barca-gold/50 mb-4"></i>
+              <p class="text-gray-400 text-sm">Coloca tu imagen aquí</p>
+            </div>
+          </div>
+          
+          <!-- Floating Elements -->
+          <div class="absolute -top-10 -right-10 w-20 h-20 bg-barca-blue/30 rounded-full blur-xl animate-float"></div>
+          <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-barca-red/30 rounded-full blur-xl animate-float" style="animation-delay: 1.5s;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <a href="#about" class="text-barca-gold hover:text-barca-gold/80 transition-colors">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </a>
+  </div>
+</section>
