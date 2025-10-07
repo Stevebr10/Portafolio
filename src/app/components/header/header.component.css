@@ -1,6 +1,201 @@
-.gradient-text-hero {
+/* Top Banner */
+.top-banner {
+  background: #1a1d29;
+  font-size: 13px;
+}
+
+/* Main Header */
+.main-header {
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo Styles */
+.logo-circle {
+  width: 50px;
+  height: 50px;
   background: linear-gradient(135deg, #004D98 0%, #A50044 50%, #EDBB00 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: white;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0, 77, 152, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.logo-circle:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.logo-text {
+  font-family: 'Courier New', monospace;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1d29;
+  line-height: 1.2;
+}
+
+.brand-subtitle {
+  font-size: 11px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* Navigation Links */
+.nav-link {
+  color: #1a1d29;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, #004D98, #EDBB00);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #004D98;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Right Side Icons */
+.nav-icon {
+  color: #1a1d29;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.3s ease;
+}
+
+.nav-icon:hover {
+  color: #004D98;
+}
+
+.nav-icon i {
+  font-size: 16px;
+}
+
+/* CTA Button */
+.cta-button {
+  background: linear-gradient(135deg, #004D98 0%, #A50044 100%);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 77, 152, 0.3);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 77, 152, 0.4);
+}
+
+/* Language Button */
+.lang-button {
+  background: transparent;
+  border: 2px solid #1a1d29;
+  color: #1a1d29;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-button:hover {
+  background: #1a1d29;
+  color: white;
+}
+
+/* Bottom Color Bar */
+.color-bar {
+  height: 4px;
+  background: linear-gradient(90deg, #004D98 0%, #A50044 50%, #EDBB00 100%);
+}
+
+/* Mobile Navigation */
+.mobile-nav-link {
+  display: block;
+  color: #1a1d29;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px 0;
+  transition: color 0.3s ease;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.mobile-nav-link:hover {
+  color: #004D98;
+  padding-left: 8px;
+}
+
+/* Animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .brand-name {
+    font-size: 18px;
+  }
+  
+  .brand-subtitle {
+    font-size: 10px;
+  }
+  
+  .logo-circle {
+    width: 45px;
+    height: 45px;
+    font-size: 14px;
+  }
 }

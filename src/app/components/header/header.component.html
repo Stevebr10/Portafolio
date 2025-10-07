@@ -1,38 +1,70 @@
-<!-- <p>header works!</p> -->
- <header class="fixed top-0 left-0 w-full z-50 bg-barca-dark/90 backdrop-blur-md border-b border-barca-blue/20 transition-all duration-300" 
-        [class.shadow-lg]="isScrolled">
-  <nav class="container mx-auto px-6 py-4">
-    <div class="flex items-center justify-between">
+<!-- Top Banner Bar -->
+<!-- <div class="top-banner bg-barca-dark text-white py-2 text-center text-sm"> -->
+<div class="color-bar bg-barca-dark text-white py-2 text-center text-sm">
+  <div class="container mx-auto px-6 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="flex gap-2">
+        <!-- <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+        <span class="w-3 h-3 bg-red-500 rounded-full"></span> -->
+      </div>
+      <!-- <span class="hidden md:inline">
+        🎯 <strong>Nuevo Proyecto:</strong> ¡Descubre mi último trabajo!
+      </span> -->
+      <!-- <span class="md:hidden">
+        🎯 <strong>Nuevo Proyecto Disponible</strong>
+      </span> -->
+    </div>
+    <a href="#projects" class="text-barca-gold hover:text-white transition-colors font-semibold uppercase text-xs tracking-wide">
+      Ver Proyectos →
+    </a>
+  </div>
+</div>
+
+<!-- Main Header -->
+<header class="main-header bg-white shadow-md sticky top-0 z-50">
+  <nav class="container mx-auto px-6">
+    <div class="flex items-center justify-between h-20">
       <!-- Logo -->
-      <div class="text-2xl font-bold" data-aos="fade-right">
-        <a href="#home" class="gradient-text-hero">
-          <span class="text-barca-gold">&lt;</span>
-          <span class="text-white">TuNombre</span>
-          <span class="text-barca-gold">/&gt;</span>
+      <div class="flex items-center gap-3">
+        <a href="#home" class="flex items-center gap-3 no-underline">
+          <!-- Logo Circle -->
+          <div class="logo-circle">
+            <span class="logo-text">&lt;B/&gt;</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="brand-name">Brandon Oña</span>
+            <span class="brand-subtitle">Full Stack Developer</span>
+          </div>
         </a>
       </div>
 
-      <!-- Navigation Links - Desktop -->
-      <ul class="hidden md:flex space-x-8" data-aos="fade-down">
+      <!-- Desktop Navigation -->
+      <ul class="hidden lg:flex items-center space-x-8">
         <li *ngFor="let item of menuItems">
           <a [href]="item.link" 
-             class="text-white hover:text-barca-gold transition-colors duration-300 font-medium text-sm uppercase tracking-wide"
+             class="nav-link"
              (click)="closeMenu()">
             {{ item.name }}
           </a>
         </li>
       </ul>
 
-      <!-- CTA Button - Desktop -->
-      <a href="#contact" class="hidden md:block" data-aos="fade-left">
-        <button class="btn-barca text-sm">
-          Contactar
-        </button>
-      </a>
+      <!-- Right Side Buttons -->
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="#contact" class="nav-icon">
+          <i class="fas fa-user"></i>
+          <span class="ml-1">Login</span>
+        </a>
+        <a href="#projects" class="cta-button">
+          <i class="fas fa-briefcase mr-2"></i>
+          Ver Proyectos
+        </a>
+        <button class="lang-button">ES</button>
+      </div>
 
       <!-- Mobile Menu Button -->
       <button (click)="toggleMenu()" 
-              class="md:hidden text-white focus:outline-none"
+              class="lg:hidden text-barca-dark focus:outline-none"
               aria-label="Toggle menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path *ngIf="!isMenuOpen" 
@@ -51,24 +83,34 @@
 
     <!-- Mobile Menu -->
     <div *ngIf="isMenuOpen" 
-         class="md:hidden mt-4 pb-4 border-t border-barca-blue/20 pt-4"
+         class="lg:hidden pb-4 border-t border-gray-200 mt-2"
          [@slideDown]>
-      <ul class="space-y-4">
+      <ul class="space-y-2 mt-4">
         <li *ngFor="let item of menuItems">
           <a [href]="item.link" 
              (click)="closeMenu()"
-             class="block text-white hover:text-barca-gold transition-colors duration-300 py-2 text-base uppercase tracking-wide">
+             class="mobile-nav-link">
             {{ item.name }}
           </a>
         </li>
+        <li class="pt-4 border-t border-gray-200">
+          <a href="#contact" class="mobile-nav-link">
+            <i class="fas fa-user mr-2"></i>
+            Login
+          </a>
+        </li>
         <li>
-          <a href="#contact" (click)="closeMenu()">
-            <button class="btn-barca w-full text-sm">
-              Contactar
+          <a href="#projects" class="block">
+            <button class="cta-button w-full">
+              <i class="fas fa-briefcase mr-2"></i>
+              Ver Proyectos
             </button>
           </a>
         </li>
       </ul>
     </div>
   </nav>
+
+  <!-- Bottom Color Bar -->
+  <div class="color-bar"></div>
 </header>
