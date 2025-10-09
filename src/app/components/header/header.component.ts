@@ -42,8 +42,8 @@ export class HeaderComponent {
     { name: 'Sobre Mí', link: '#about' },
     { name: 'Habilidades', link: '#skills' },
     { name: 'Proyectos', link: '#projects' },
-    { name: 'Experiencia', link: '#experience' },
-    { name: 'Contacto', link: '#contact' }
+    // { name: 'Experiencia', link: '#experience' },
+    // { name: 'Contacto', link: '#contact' }
   ];
 
   @HostListener('window:scroll', [])
