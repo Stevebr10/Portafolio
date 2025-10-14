@@ -59,15 +59,15 @@ interface Interest {
 })
 export class AboutComponent {
   // Estadísticas
-  yearsOfExperience: number = 5;
-  completedProjects: number = 50;
-  awards: number = 10;
-  clients: number = 30;
+  yearsOfExperience: number = 2;
+  completedProjects: number = 10;
+  awards: number = 5;
+  clients: number = 10;
 
   // Información personal
   currentPosition: string = 'Ingeniero de Software';
-  email: string = 'tu.email@ejemplo.com';
-  location: string = 'Tu Ciudad, País';
+  email: string = 'brandon.onaguaman@epn.edu.ec';
+  location: string = 'Quito, Ecuador';
   education: string = 'Ingeniería en Software';
 
   // Intereses
