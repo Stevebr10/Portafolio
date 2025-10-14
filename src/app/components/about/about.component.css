@@ -1,0 +1,200 @@
+/* About Section Styles - Optimized Transitions */
+
+#about {
+  position: relative;
+  background: linear-gradient(135deg, var(--barca-dark) 0%, #0d1126 100%);
+  scroll-margin-top: 80px;
+}
+
+/* Seamless blend with previous section */
+#about::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 160px;
+  background: linear-gradient(
+    to bottom, 
+    var(--barca-dark) 0%,
+    var(--barca-dark) 40%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Glow animation for header transition */
+@keyframes glow-move {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+.animate-glow-move {
+  animation: glow-move 8s ease-in-out infinite alternate;
+}
+
+/* Card animations */
+#about .card-barca {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#about .card-barca:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 77, 152, 0.15);
+}
+
+#about .card-barca::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(0, 77, 152, 0.08), 
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+#about .card-barca:hover::before {
+  left: 100%;
+}
+
+/* Icon pulse animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 77, 152, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 16px 4px rgba(0, 77, 152, 0.15);
+    transform: scale(1.05);
+  }
+}
+
+#about .card-barca:hover .w-14 {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Interest tags */
+#about .flex-wrap span {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+#about .flex-wrap span::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg, 
+    var(--barca-blue), 
+    var(--barca-gold)
+  );
+  transform: translateX(-50%);
+  transition: width 0.4s ease;
+}
+
+#about .flex-wrap span:hover::before {
+  width: 100%;
+}
+
+#about .flex-wrap span:hover {
+  transform: translateY(-2px);
+}
+
+/* Background parallax effect */
+#about .absolute.inset-0 img {
+  transition: transform 6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#about:hover .absolute.inset-0 img {
+  transform: scale(1.05);
+}
+
+/* Stats counter animation */
+#about .text-center p:first-child {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+#about .text-center:hover p:first-child {
+  transform: scale(1.1);
+}
+
+/* Fade in smooth animation */
+@keyframes fade-in-smooth {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-smooth {
+  animation: fade-in-smooth 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #about::before {
+    top: -60px;
+    height: 120px;
+  }
+  
+  #about h2 {
+    font-size: 2.5rem;
+  }
+  
+  #about .grid {
+    gap: 1rem;
+  }
+  
+  #about .text-4xl,
+  #about .text-5xl {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  #about::before {
+    top: -40px;
+    height: 80px;
+  }
+  
+  #about h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Ensure smooth transitions between sections */
+#about + section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Loading optimization */
+#about .absolute.inset-0 > div {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  will-change: transform;
+}
