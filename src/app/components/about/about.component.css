@@ -24,6 +24,25 @@
   z-index: 20;
 }
 
+/* Seamless blend with next section */
+#about::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: 0;
+  right: 0;
+  height: 190px;
+  background: linear-gradient(
+    to top,
+    var(--barca-dark) 0%,
+    var(--barca-dark) 40%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 20;
+}
+
+
 /* Glow animation for header transition */
 @keyframes glow-move {
   0% {
