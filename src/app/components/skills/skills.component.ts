@@ -1,14 +1,3 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-skills',
-//   imports: [],
-//   templateUrl: './skills.component.html',
-//   styleUrl: './skills.component.css'
-// })
-// export class SkillsComponent {
-
-// }
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -30,20 +19,20 @@ interface Stats {
   projects: number;
   clients: number;
   awards: number;
+  animatedValue?: number;
 }
 
 @Component({
   selector: 'app-skills',
-  standalone: true, // <-- 2. AÑADE standalone: true
-  imports: [
-    CommonModule // <-- 3. AÑADE CommonModule a los imports
-  ],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit {
   categories: string[] = ['all', 'frontend', 'backend', 'tools'];
   selectedCategory: string = 'all';
+  Math = Math; 
 
   skills: Skill[] = [
     { name: 'Angular', level: 95, animatedLevel: 0, icon: 'fab fa-angular', category: 'frontend' },
@@ -77,16 +66,16 @@ export class SkillsComponent implements OnInit {
     { name: 'Photoshop', icon: 'fas fa-image' }
   ];
 
-  stats: Stats = {
-    linesOfCode: '100K+',
-    projects: 50,
-    clients: 30,
-    awards: 8
-  };
+  stats: Stats[] = [
+    { linesOfCode: '100K+', projects: 0, clients: 0, awards: 0, animatedValue: 0 },
+    { linesOfCode: '', projects: 50, clients: 0, awards: 0, animatedValue: 0 },
+    { linesOfCode: '', projects: 0, clients: 30, awards: 0, animatedValue: 0 },
+    { linesOfCode: '', projects: 0, clients: 0, awards: 8, animatedValue: 0 }
+  ];
 
   ngOnInit() {
     this.filterSkills('all');
-    this.animateSkillBars();
+    setTimeout(() => this.animateStats(), 500);
   }
 
   filterSkills(category: string) {
@@ -98,7 +87,6 @@ export class SkillsComponent implements OnInit {
       this.filteredSkills = this.skills.filter(skill => skill.category === category);
     }
 
-    // Reset and re-animate
     this.filteredSkills.forEach(skill => skill.animatedLevel = 0);
     setTimeout(() => this.animateSkillBars(), 100);
   }
@@ -107,8 +95,33 @@ export class SkillsComponent implements OnInit {
     this.filteredSkills.forEach((skill, index) => {
       setTimeout(() => {
         skill.animatedLevel = skill.level;
-      }, index * 100);
+      }, index * 80);
     });
+  }
+
+  animateStats() {
+    this.stats.forEach((stat, index) => {
+      const target = stat.projects || stat.clients || stat.awards;
+      if (target > 0) {
+        this.animateNumber(index, 0, target, 2000);
+      }
+    });
+  }
+
+  animateNumber(index: number, start: number, end: number, duration: number) {
+    const range = end - start;
+    const increment = range / (duration / 16);
+    let current = start;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= end) {
+        this.stats[index].animatedValue = end;
+        clearInterval(timer);
+      } else {
+        this.stats[index].animatedValue = Math.floor(current);
+      }
+    }, 16);
   }
 
   getLevelText(level: number): string {
@@ -118,10 +131,10 @@ export class SkillsComponent implements OnInit {
     return 'Básico';
   }
 
-  getProgressBarClass(level: number): string {
-    if (level >= 90) return 'bg-gradient-to-r from-barca-blue to-barca-gold';
-    if (level >= 75) return 'bg-gradient-to-r from-barca-blue to-barca-red';
-    if (level >= 60) return 'bg-gradient-to-r from-barca-red to-barca-gold';
-    return 'bg-gray-600';
+  getSkillColor(level: number): string {
+    if (level >= 90) return '#FFD700';
+    if (level >= 75) return '#5B8FF9';
+    if (level >= 60) return '#E94560';
+    return '#6B7280';
   }
 }
