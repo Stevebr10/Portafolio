@@ -1,14 +1,17 @@
+// skills.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface Skill {
   name: string;
   level: number;
-  animatedLevel: number;
   icon: string;
   category: 'frontend' | 'backend' | 'tools' | 'all';
+  description: string; // <-- AÑADIDO: Una breve descripción
 }
 
+// ... (la interfaz Tool y Stats se mantienen igual) ...
 interface Tool {
   name: string;
   icon: string;
@@ -19,8 +22,8 @@ interface Stats {
   projects: number;
   clients: number;
   awards: number;
-  animatedValue?: number;
 }
+
 
 @Component({
   selector: 'app-skills',
@@ -32,29 +35,27 @@ interface Stats {
 export class SkillsComponent implements OnInit {
   categories: string[] = ['all', 'frontend', 'backend', 'tools'];
   selectedCategory: string = 'all';
-  Math = Math; 
 
+  // MODIFICADO: Se añade un campo 'description' para más contexto
   skills: Skill[] = [
-    { name: 'Angular', level: 95, animatedLevel: 0, icon: 'fab fa-angular', category: 'frontend' },
-    { name: 'React', level: 90, animatedLevel: 0, icon: 'fab fa-react', category: 'frontend' },
-    { name: 'Vue.js', level: 85, animatedLevel: 0, icon: 'fab fa-vuejs', category: 'frontend' },
-    { name: 'TypeScript', level: 92, animatedLevel: 0, icon: 'fab fa-js', category: 'frontend' },
-    { name: 'HTML5 & CSS3', level: 98, animatedLevel: 0, icon: 'fab fa-html5', category: 'frontend' },
-    { name: 'Tailwind CSS', level: 95, animatedLevel: 0, icon: 'fas fa-palette', category: 'frontend' },
-    { name: 'Node.js', level: 88, animatedLevel: 0, icon: 'fab fa-node-js', category: 'backend' },
-    { name: 'Express.js', level: 85, animatedLevel: 0, icon: 'fas fa-server', category: 'backend' },
-    { name: 'MongoDB', level: 82, animatedLevel: 0, icon: 'fas fa-database', category: 'backend' },
-    { name: 'PostgreSQL', level: 80, animatedLevel: 0, icon: 'fas fa-database', category: 'backend' },
-    { name: 'Python', level: 75, animatedLevel: 0, icon: 'fab fa-python', category: 'backend' },
-    { name: 'Django', level: 70, animatedLevel: 0, icon: 'fas fa-code', category: 'backend' },
-    { name: 'Git & GitHub', level: 95, animatedLevel: 0, icon: 'fab fa-git-alt', category: 'tools' },
-    { name: 'Docker', level: 78, animatedLevel: 0, icon: 'fab fa-docker', category: 'tools' },
-    { name: 'AWS', level: 75, animatedLevel: 0, icon: 'fab fa-aws', category: 'tools' },
-    { name: 'Figma', level: 85, animatedLevel: 0, icon: 'fab fa-figma', category: 'tools' }
+    { name: 'Angular', level: 95, icon: 'fab fa-angular', category: 'frontend', description: 'Desarrollo de SPAs robustas y escalables con el ecosistema completo de Angular.' },
+    { name: 'React', level: 90, icon: 'fab fa-react', category: 'frontend', description: 'Creación de UIs interactivas y componentizadas con un enfoque en el rendimiento.' },
+    { name: 'TypeScript', level: 92, icon: 'fas fa-code', category: 'frontend', description: 'Aumento de la calidad del código y la mantenibilidad con tipado estático.' },
+    { name: 'Tailwind CSS', level: 95, icon: 'fas fa-palette', category: 'frontend', description: 'Diseño de interfaces modernas y responsivas a gran velocidad con un enfoque utility-first.' },
+    { name: 'Node.js', level: 88, icon: 'fab fa-node-js', category: 'backend', description: 'Construcción de APIs RESTful eficientes y rápidas del lado del servidor.' },
+    { name: 'MongoDB', level: 82, icon: 'fas fa-database', category: 'backend', description: 'Modelado y gestión de bases de datos NoSQL flexibles y orientadas a documentos.' },
+    { name: 'PostgreSQL', level: 80, icon: 'fas fa-database', category: 'backend', description: 'Diseño de bases de datos relacionales robustas y seguras.' },
+    { name: 'Python', level: 75, icon: 'fab fa-python', category: 'backend', description: 'Desarrollo de scripts, automatización y lógica de backend con un lenguaje versátil.' },
+    { name: 'Git & GitHub', level: 95, icon: 'fab fa-git-alt', category: 'tools', description: 'Control de versiones avanzado, flujos de trabajo colaborativos y CI/CD.' },
+    { name: 'Docker', level: 78, icon: 'fab fa-docker', category: 'tools', description: 'Creación de entornos de desarrollo y producción consistentes mediante contenedores.' },
+    { name: 'AWS', level: 75, icon: 'fab fa-aws', category: 'tools', description: 'Despliegue y gestión de aplicaciones en la nube, incluyendo EC2, S3 y Lambda.' },
+    { name: 'Figma', level: 85, icon: 'fab fa-figma', category: 'tools', description: 'Diseño y prototipado de interfaces de usuario colaborativas y eficientes.' }
   ];
 
   filteredSkills: Skill[] = [];
+  activeSkill: Skill | null = null; // <-- NUEVO: Para la habilidad activa en el panel
 
+  // El resto de tus propiedades (tools, stats) se mantienen igual
   tools: Tool[] = [
     { name: 'VS Code', icon: 'fas fa-code' },
     { name: 'Postman', icon: 'fas fa-paper-plane' },
@@ -66,75 +67,43 @@ export class SkillsComponent implements OnInit {
     { name: 'Photoshop', icon: 'fas fa-image' }
   ];
 
-  stats: Stats[] = [
-    { linesOfCode: '100K+', projects: 0, clients: 0, awards: 0, animatedValue: 0 },
-    { linesOfCode: '', projects: 50, clients: 0, awards: 0, animatedValue: 0 },
-    { linesOfCode: '', projects: 0, clients: 30, awards: 0, animatedValue: 0 },
-    { linesOfCode: '', projects: 0, clients: 0, awards: 8, animatedValue: 0 }
-  ];
+  stats: Stats = {
+    linesOfCode: '100K+',
+    projects: 50,
+    clients: 30,
+    awards: 8
+  };
+
 
   ngOnInit() {
     this.filterSkills('all');
-    setTimeout(() => this.animateStats(), 500);
   }
 
   filterSkills(category: string) {
     this.selectedCategory = category;
-    
+    this.activeSkill = null; // Resetea la habilidad activa al cambiar de filtro
     if (category === 'all') {
       this.filteredSkills = [...this.skills];
     } else {
+      // Casteamos category para que coincida con el tipo de la interfaz
       this.filteredSkills = this.skills.filter(skill => skill.category === category);
     }
-
-    this.filteredSkills.forEach(skill => skill.animatedLevel = 0);
-    setTimeout(() => this.animateSkillBars(), 100);
   }
 
-  animateSkillBars() {
-    this.filteredSkills.forEach((skill, index) => {
-      setTimeout(() => {
-        skill.animatedLevel = skill.level;
-      }, index * 80);
-    });
+  // --- NUEVAS FUNCIONES PARA INTERACTIVIDAD ---
+  setActiveSkill(skill: Skill) {
+    this.activeSkill = skill;
   }
 
-  animateStats() {
-    this.stats.forEach((stat, index) => {
-      const target = stat.projects || stat.clients || stat.awards;
-      if (target > 0) {
-        this.animateNumber(index, 0, target, 2000);
-      }
-    });
+  clearActiveSkill() {
+    this.activeSkill = null;
   }
 
-  animateNumber(index: number, start: number, end: number, duration: number) {
-    const range = end - start;
-    const increment = range / (duration / 16);
-    let current = start;
-
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= end) {
-        this.stats[index].animatedValue = end;
-        clearInterval(timer);
-      } else {
-        this.stats[index].animatedValue = Math.floor(current);
-      }
-    }, 16);
-  }
-
-  getLevelText(level: number): string {
-    if (level >= 90) return 'Experto';
-    if (level >= 75) return 'Avanzado';
-    if (level >= 60) return 'Intermedio';
-    return 'Básico';
-  }
-
-  getSkillColor(level: number): string {
-    if (level >= 90) return '#FFD700';
-    if (level >= 75) return '#5B8FF9';
-    if (level >= 60) return '#E94560';
-    return '#6B7280';
+  // --- FUNCIONES LEGACY (getProgressBarClass se puede reutilizar) ---
+  getProgressBarClass(level: number): string {
+    if (level >= 90) return 'bg-gradient-to-r from-barca-blue to-barca-gold';
+    if (level >= 75) return 'bg-gradient-to-r from-barca-blue to-barca-red';
+    if (level >= 60) return 'bg-gradient-to-r from-barca-red to-barca-gold';
+    return 'bg-gray-600';
   }
 }

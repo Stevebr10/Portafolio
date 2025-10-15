@@ -1,144 +1,96 @@
-<section id="skills" class="py-24 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
-  <!-- Animated Background -->
+<section id="skills" class="py-24 bg-barca-dark-secondary relative overflow-hidden">
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute w-96 h-96 bg-blue-500/10 rounded-full blur-3xl top-0 left-1/4 animate-pulse-slow"></div>
-    <div class="absolute w-96 h-96 bg-purple-500/10 rounded-full blur-3xl bottom-0 right-1/4 animate-pulse-slow animation-delay-2000"></div>
-    <div class="absolute w-96 h-96 bg-pink-500/10 rounded-full blur-3xl top-1/2 left-1/2 animate-pulse-slow animation-delay-4000"></div>
+    <div class="absolute w-96 h-96 bg-barca-blue/5 rounded-full blur-3xl top-1/4 left-0"></div>
+    <div class="absolute w-96 h-96 bg-barca-red/5 rounded-full blur-3xl bottom-1/4 right-0"></div>
   </div>
 
   <div class="container mx-auto px-6 relative z-10">
-    <!-- Section Title -->
     <div class="text-center mb-16" data-aos="fade-up">
-      <h2 class="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-        Habilidades Técnicas
-      </h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mx-auto mb-6 rounded-full"></div>
-      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-        Dominio de tecnologías modernas para crear soluciones web robustas y escalables
+      <h2 class="section-title gradient-text-hero inline-block">Mi Stack Tecnológico</h2>
+      <p class="text-gray-400 text-lg mt-4 max-w-2xl mx-auto">
+        Un universo de herramientas que utilizo para transformar ideas en realidad digital.
       </p>
     </div>
 
-    <!-- Skills Filter -->
-    <div class="flex justify-center mb-16" data-aos="fade-up">
-      <div class="inline-flex bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-1.5 gap-2">
+    <div class="flex justify-center mb-12" data-aos="fade-up">
+      <div class="inline-flex bg-barca-dark border border-barca-blue/30 rounded-full p-2">
         <button *ngFor="let category of categories"
                 (click)="filterSkills(category)"
                 [class.active]="selectedCategory === category"
-                class="filter-btn-new px-8 py-3 rounded-xl text-sm font-semibold transition-all duration-500 relative overflow-hidden">
-          <span class="relative z-10">{{ category.charAt(0).toUpperCase() + category.slice(1) }}</span>
+                class="filter-btn px-6 py-2 rounded-full text-sm font-medium capitalize transition-all duration-300">
+          {{ category }}
         </button>
       </div>
     </div>
 
-    <!-- Skills - Circular Progress Design -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-20" data-aos="fade-up">
-      <div *ngFor="let skill of filteredSkills; let i = index" 
-           class="skill-circle-container"
-           [attr.data-aos]="'zoom-in'"
-           [attr.data-aos-delay]="i * 50">
-        
-        <div class="relative group">
-          <!-- Circular Progress SVG -->
-          <svg class="skill-circle transform -rotate-90" viewBox="0 0 120 120">
-            <!-- Background Circle -->
-            <circle cx="60" cy="60" r="52" 
-                    fill="none" 
-                    stroke="rgba(75, 85, 99, 0.3)" 
-                    stroke-width="8"/>
-            
-            <!-- Progress Circle -->
-            <circle cx="60" cy="60" r="52" 
-                    fill="none" 
-                    [attr.stroke]="getSkillColor(skill.level)"
-                    stroke-width="8"
-                    stroke-linecap="round"
-                    class="skill-progress-circle"
-                    [style.stroke-dasharray]="2 * Math.PI * 52"
-                    [style.stroke-dashoffset]="2 * Math.PI * 52 * (1 - skill.animatedLevel / 100)"
-                    style="transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1)"/>
-            
-            <!-- Glow Effect -->
-            <circle cx="60" cy="60" r="52" 
-                    fill="none" 
-                    [attr.stroke]="getSkillColor(skill.level)"
-                    stroke-width="8"
-                    opacity="0.3"
-                    class="skill-glow"
-                    [style.stroke-dasharray]="2 * Math.PI * 52"
-                    [style.stroke-dashoffset]="2 * Math.PI * 52 * (1 - skill.animatedLevel / 100)"
-                    style="filter: blur(8px); transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1)"/>
-          </svg>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mt-20">
 
-          <!-- Center Content -->
-          <div class="absolute inset-0 flex flex-col items-center justify-center">
-            <i [class]="skill.icon + ' text-4xl mb-2 group-hover:scale-110 transition-transform duration-300'" 
-               [style.color]="getSkillColor(skill.level)"></i>
-            <span class="text-2xl font-bold" [style.color]="getSkillColor(skill.level)">{{ skill.animatedLevel }}%</span>
+      <div class="relative w-full aspect-square max-w-lg mx-auto" data-aos="fade-right">
+        <div class="skill-orbit-container">
+          <div class="core-orbit">
+             <i class="fas fa-atom text-4xl text-barca-gold"></i>
           </div>
 
-          <!-- Skill Info on Hover -->
-          <div class="skill-info opacity-0 group-hover:opacity-100 transition-all duration-300">
-            <h3 class="text-white font-semibold text-lg mb-1">{{ skill.name }}</h3>
-            <p class="text-gray-400 text-sm">{{ getLevelText(skill.level) }}</p>
+          <div *ngFor="let skill of filteredSkills; let i = index"
+               class="skill-icon-wrapper"
+               [style.transform]="'rotate(' + (360 / filteredSkills.length * i) + 'deg)'">
+            <div class="skill-icon"
+                 (mouseenter)="setActiveSkill(skill)"
+                 (mouseleave)="clearActiveSkill()"
+                 [style.transform]="'rotate(' + -(360 / filteredSkills.length * i) + 'deg)'"
+                 [style.animation-delay]="i * 150 + 'ms'">
+              <i [class]="skill.icon + ' text-3xl'"></i>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Tools Section - Floating Tags -->
-    <div class="mt-24 mb-20" data-aos="fade-up">
-      <h3 class="text-3xl font-bold text-center text-white mb-12 flex items-center justify-center gap-3">
-        <span class="text-purple-400">⚡</span>
-        Otras Herramientas
-        <span class="text-pink-400">⚡</span>
-      </h3>
-      <div class="flex flex-wrap justify-center gap-4">
-        <div *ngFor="let tool of tools; let i = index"
-             class="tool-tag"
-             [attr.data-aos]="'fade-up'"
-             [attr.data-aos-delay]="i * 50">
-          <i [class]="tool.icon + ' mr-2 text-lg'"></i>
-          <span>{{ tool.name }}</span>
-        </div>
-      </div>
-    </div>
+      <div class="card-barca p-8" data-aos="fade-left">
+        <div *ngIf="activeSkill; else defaultContent" class="transition-opacity duration-300">
+          <div class="flex items-center gap-4 mb-4">
+            <i [class]="activeSkill.icon + ' text-4xl text-barca-gold'"></i>
+            <h3 class="text-3xl font-bold text-white">{{ activeSkill.name }}</h3>
+          </div>
+          <p class="text-gray-400 mb-6 h-12">{{ activeSkill.description }}</p>
 
-    <!-- Stats Section - Minimal Modern Cards -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6" data-aos="fade-up">
-      <div class="stat-card group">
-        <div class="stat-icon bg-gradient-to-br from-blue-500/20 to-blue-600/20">
-          <i class="fas fa-code text-blue-400 text-3xl"></i>
+          <div class="w-full h-3 bg-barca-dark rounded-full overflow-hidden">
+            <div class="h-full rounded-full transition-all duration-500 ease-out"
+                 [style.width.%]="activeSkill.level"
+                 [class]="getProgressBarClass(activeSkill.level)">
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine"></div>
+            </div>
+          </div>
+          <p class="text-right mt-2 font-semibold text-barca-gold">{{ activeSkill.level }}% Dominio</p>
         </div>
-        <p class="stat-number text-yellow-400">{{ stats[0].linesOfCode }}</p>
-        <p class="stat-label">Líneas de Código</p>
-        <div class="stat-line bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
-      </div>
 
-      <div class="stat-card group">
-        <div class="stat-icon bg-gradient-to-br from-purple-500/20 to-purple-600/20">
-          <i class="fas fa-project-diagram text-purple-400 text-3xl"></i>
-        </div>
-        <p class="stat-number text-yellow-400">{{ stats[1].animatedValue }}</p>
-        <p class="stat-label">Proyectos Completados</p>
-        <div class="stat-line bg-gradient-to-r from-transparent via-purple-400 to-transparent"></div>
-      </div>
+        <ng-template #defaultContent>
+          <div class="text-center transition-opacity duration-300 h-[156px] flex flex-col justify-center items-center">
+            <i class="fas fa-hand-pointer text-4xl text-barca-blue mb-4"></i>
+            <h4 class="text-xl font-semibold text-white">Interactúa conmigo</h4>
+            <p class="text-gray-400">Pasa el cursor sobre una habilidad para ver los detalles.</p>
+          </div>
+        </ng-template>
 
-      <div class="stat-card group">
-        <div class="stat-icon bg-gradient-to-br from-pink-500/20 to-pink-600/20">
-          <i class="fas fa-users text-pink-400 text-3xl"></i>
-        </div>
-        <p class="stat-number text-yellow-400">{{ stats[2].animatedValue }}</p>
-        <p class="stat-label">Clientes Satisfechos</p>
-        <div class="stat-line bg-gradient-to-r from-transparent via-pink-400 to-transparent"></div>
-      </div>
+        <hr class="border-barca-blue/20 my-8">
 
-      <div class="stat-card group">
-        <div class="stat-icon bg-gradient-to-br from-yellow-500/20 to-yellow-600/20">
-          <i class="fas fa-trophy text-yellow-400 text-3xl"></i>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+          <div>
+            <p class="text-2xl font-bold text-barca-gold">{{ stats.linesOfCode }}</p>
+            <p class="text-gray-400 text-xs">Líneas de Código</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-barca-gold">{{ stats.projects }}+</p>
+            <p class="text-gray-400 text-xs">Proyectos</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-barca-gold">{{ stats.clients }}+</p>
+            <p class="text-gray-400 text-xs">Clientes</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-barca-gold">{{ stats.awards }}</p>
+            <p class="text-gray-400 text-xs">Premios</p>
+          </div>
         </div>
-        <p class="stat-number text-yellow-400">{{ stats[3].animatedValue }}</p>
-        <p class="stat-label">Premios Ganados</p>
-        <div class="stat-line bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
       </div>
     </div>
   </div>
