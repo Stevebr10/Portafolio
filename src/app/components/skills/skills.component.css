@@ -1,6 +1,4 @@
-/* skills.component.css */
-
-/* MANTÉN TUS ESTILOS .filter-btn EXISTENTES */
+/* Botones de filtro */
 .filter-btn {
   color: #9ca3af;
   background: transparent;
@@ -8,98 +6,89 @@
   cursor: pointer;
 }
 .filter-btn.active {
-  background: linear-gradient(135deg, var(--barca-blue) 0%, var(--barca-red) 100%);
+  
   color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 .filter-btn:hover:not(.active) {
   color: var(--barca-gold);
 }
 
+/* --- LÓGICA DE LA ÓRBITA --- */
 
-/* --- NUEVOS ESTILOS PARA EL RADAR DE HABILIDADES --- */
-
-/* Contenedor del radar que rota */
-.skill-orbit-container {
-  width: 50%;
-  height: 50%;
-  position: relative;
-  animation: orbit-rotation 70s linear infinite; /* Animación de rotación lenta */
+/* 1. El contenedor gira en sentido horario */
+.orbit-container {
+  /* Girar todo el contenedor */
+  animation: orbit-spin 40s linear infinite;
 }
 
-/* Núcleo central */
-.core-orbit {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
-  background-color: var(--barca-dark);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid var(--barca-blue);
-  box-shadow: 0 0 20px var(--barca-blue);
-  animation: pulse-core 2s infinite ease-in-out; /* Animación de pulso */
+/* Pausar animación al hacer hover para facilitar el click */
+.orbit-container:hover {
+  animation-play-state: paused;
+}
+/* Cuando pausas el contenedor, debes pausar los hijos también para que no se desincronicen */
+.orbit-container:hover .skill-planet {
+  animation-play-state: paused;
 }
 
-/* Wrapper para cada icono, usado para el posicionamiento en círculo */
-.skill-icon-wrapper {
-  position: absolute;
-  top: 0;
-  left: 100%;
-  width: 1px;
-  height: 100%;
-  transform-origin: bottom center;
-}
-
-/* Estilo del icono individual */
-.skill-icon {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 70px;
-  height: 70px;
-  margin-left: -35px; /* Centrado horizontal */
-  margin-top: -35px;  /* Centrado vertical */
-  background: rgba(26, 29, 41, 0.8);
-  border: 1px solid var(--barca-blue);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  animation: float-icon 4s ease-in-out infinite; /* Animación de flotación */
-}
-
-.skill-icon:hover {
-  transform: scale(1.2) !important; /* Importante para sobreescribir el transform de posicionamiento */
-  border-color: var(--barca-gold);
-  color: var(--barca-gold);
-  box-shadow: 0 0 25px var(--barca-gold);
+/* 2. Posicionamiento de los planetas */
+.skill-planet {
+  /* Truco matemático CSS:
+     1. Rotamos el elemento base a su posición en grados (--rotate-deg).
+     2. Trasladamos hacia afuera (radio del círculo) = 250px (mitad de 500px).
+     3. IMPORTANTE: Aplicamos una animación de rotación INVERSA para que el icono siempre mire hacia arriba.
+  */
+  transform: rotate(var(--rotate-deg)) translateY(-210px); /* 210px es el radio */
+  
+  /* Animación para contrarrestar la rotación del padre */
+  animation: counter-spin 40s linear infinite;
 }
 
 /* --- ANIMACIONES --- */
 
-/* Rotación de todo el sistema */
-@keyframes orbit-rotation {
+@keyframes orbit-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-/* Flotación de los iconos individuales */
-@keyframes float-icon {
-  0% { transform: translateY(0px) rotate(var(--angle)); }
-  50% { transform: translateY(-15px) rotate(var(--angle)); }
-  100% { transform: translateY(0px) rotate(var(--angle)); }
+@keyframes counter-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
 }
 
-/* Pulso del núcleo */
-@keyframes pulse-core {
-  0% { box-shadow: 0 0 10px var(--barca-blue); }
-  50% { box-shadow: 0 0 30px var(--barca-blue), 0 0 10px var(--barca-gold); }
-  100% { box-shadow: 0 0 10px var(--barca-blue); }
+@keyframes spin-slow-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* Brillo y Shimmer */
+.shadow-glow {
+  box-shadow: 0 0 15px var(--barca-gold), 0 0 30px rgba(237, 187, 0, 0.4);
+  border-color: var(--barca-gold);
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+}
+
+.animate-spin-slow {
+    animation: orbit-spin 10s linear infinite;
+}
+
+.animate-spin-slow-reverse {
+    animation: spin-slow-reverse 60s linear infinite;
+}
+
+/* Utilidad para ocultar scrollbar en móvil */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }

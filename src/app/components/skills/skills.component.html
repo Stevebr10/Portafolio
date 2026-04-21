@@ -1,97 +1,130 @@
-<section id="skills" class="py-24 bg-barca-dark relative overflow-hidden">
+<section id="skills" class="py-24 bg-barca-dark relative overflow-hidden min-h-screen flex items-center">
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute w-96 h-96 bg-barca-blue/5 rounded-full blur-3xl top-1/4 left-0"></div>
-    <div class="absolute w-96 h-96 bg-barca-red/5 rounded-full blur-3xl bottom-1/4 right-0"></div>
+    <div class="absolute w-[500px] h-[500px] bg-barca-blue/10 rounded-full blur-[100px] -top-20 -left-20 animate-pulse"></div>
+    <div class="absolute w-[500px] h-[500px] bg-barca-red/10 rounded-full blur-[100px] -bottom-20 -right-20 animate-pulse delay-700"></div>
   </div>
 
-  <div class="container mx-auto px-6 relative z-10">
-    <div class="text-center mb-16" data-aos="fade-up">
-      <h2 class="section-title gradient-text-hero inline-block">Mi Stack Tecnológico</h2>
-      <p class="text-gray-400 text-lg mt-4 max-w-2xl mx-auto">
-        Un universo de herramientas que utilizo para transformar ideas en realidad digital.
+  <div class="container mx-auto px-4 relative z-10">
+    
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="section-title gradient-text-hero text-4xl md:text-5xl font-bold inline-block mb-4">
+        Tech Universe
+      </h2>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+        Explora mi sistema solar de herramientas y tecnologías.
       </p>
     </div>
 
-    <div class="flex justify-center mb-12" data-aos="fade-up">
-      <div class="inline-flex bg-barca-dark border border-barca-blue/30 rounded-full p-2">
+    <div class="flex justify-center mb-16" data-aos="fade-up">
+      <div class="inline-flex bg-barca-dark-secondary border border-barca-blue/30 rounded-full p-1.5 shadow-lg shadow-barca-blue/10">
         <button *ngFor="let category of categories"
                 (click)="filterSkills(category)"
                 [class.active]="selectedCategory === category"
-                class="filter-btn px-6 py-2 rounded-full text-sm font-medium capitalize transition-all duration-300">
-          {{ category }}
+                class="filter-btn px-6 py-2 rounded-full text-sm font-medium capitalize transition-all duration-300 relative overflow-hidden">
+          <span class="relative z-10">{{ category }}</span>
+          <div *ngIf="selectedCategory === category" 
+               class="absolute inset-0 bg-gradient-to-r from-barca-blue to-barca-red opacity-100 rounded-full -z-0"></div>
         </button>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mt-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-      <div class="relative w-full aspect-square max-w-lg mx-auto" data-aos="fade-right">
-        <div class="skill-orbit-container">
-          <div class="core-orbit">
-             <i class="fas fa-atom text-4xl text-barca-gold"></i>
-          </div>
+      <div class="relative w-full flex justify-center perspective-1000" data-aos="zoom-in">
+        
+        <div class="hidden lg:block relative w-[500px] h-[500px]">
+           <div class="absolute inset-0 rounded-full border border-dashed border-barca-blue/30 animate-spin-slow-reverse"></div>
+           <div class="absolute inset-[15%] rounded-full border border-barca-red/20"></div>
 
-          <div *ngFor="let skill of filteredSkills; let i = index"
-               class="skill-icon-wrapper"
-               [style.transform]="'rotate(' + (360 / filteredSkills.length * i) + 'deg)'">
-            <div class="skill-icon"
-                 (mouseenter)="setActiveSkill(skill)"
-                 (mouseleave)="clearActiveSkill()"
-                 [style.transform]="'rotate(' + -(360 / filteredSkills.length * i) + 'deg)'"
-                 [style.animation-delay]="i * 150 + 'ms'">
-              <i [class]="skill.icon + ' text-3xl'"></i>
+           <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-barca-dark-secondary rounded-full border-2 border-barca-gold shadow-[0_0_30px_rgba(237,187,0,0.3)] flex items-center justify-center z-20">
+             <i class="fas fa-code text-4xl text-barca-gold animate-pulse"></i>
+           </div>
+
+           <div class="orbit-container absolute inset-0">
+             <div *ngFor="let skill of filteredSkills; let i = index"
+                  class="skill-planet absolute top-0 left-1/2 -ml-8 w-16 h-16"
+                  [style.--rotate-deg]="(360 / filteredSkills.length) * i + 'deg'">
+               
+               <div class="planet-content w-16 h-16 rounded-full bg-barca-dark border border-barca-blue/50 flex items-center justify-center cursor-pointer hover:scale-110 hover:border-barca-gold hover:shadow-[0_0_20px_var(--barca-gold)] transition-all duration-300 group"
+                    (mouseenter)="setActiveSkill(skill)"
+                    [class.border-barca-gold]="activeSkill === skill"
+                    [class.shadow-glow]="activeSkill === skill">
+                 <i [class]="skill.icon" class="text-2xl text-gray-300 group-hover:text-white transition-colors"></i>
+               </div>
+             </div>
+           </div>
+        </div>
+
+        <div class="lg:hidden w-full overflow-x-auto pb-4 hide-scrollbar flex gap-4 snap-x">
+            <div *ngFor="let skill of filteredSkills" 
+                 (click)="setActiveSkill(skill)"
+                 class="snap-center shrink-0 w-20 h-20 rounded-full bg-barca-dark-secondary border border-barca-blue/30 flex items-center justify-center active:border-barca-gold transition-colors">
+                 <i [class]="skill.icon" class="text-2xl text-white"></i>
             </div>
-          </div>
+            
+        </div>
+
+      </div>
+
+      <div class="card-barca p-8 min-h-[400px] flex flex-col justify-center relative group" data-aos="fade-left">
+        <div class="absolute -inset-0.5 bg-gradient-to-r from-barca-blue via-barca-red to-barca-gold rounded-2xl opacity-20 group-hover:opacity-50 blur transition duration-500"></div>
+        
+        <div class="relative bg-barca-dark/95 backdrop-blur-xl p-6 rounded-xl h-full flex flex-col">
+            
+            <ng-container *ngIf="activeSkill; else emptyState">
+                <div class="flex items-start justify-between mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-barca-blue/20 to-barca-red/20 flex items-center justify-center border border-white/10">
+                            <i [class]="activeSkill.icon + ' text-3xl text-barca-gold'"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white tracking-wide">{{ activeSkill.name }}</h3>
+                            <span class="text-xs uppercase tracking-wider text-barca-blue font-semibold">{{ activeSkill.category }}</span>
+                        </div>
+                    </div>
+                    <span class="text-3xl font-bold text-white/10">{{ activeSkill.level }}%</span>
+                </div>
+
+                <p class="text-gray-300 mb-8 leading-relaxed text-sm h-20">
+                    {{ activeSkill.description }}
+                </p>
+
+                <div class="space-y-2 mt-auto">
+                    <div class="flex justify-between text-xs font-medium text-gray-400">
+                        <span>Nivel de Dominio</span>
+                        <span class="text-barca-gold">{{ activeSkill.level }}%</span>
+                    </div>
+                    <div class="w-full h-2 bg-gray-700/50 rounded-full overflow-hidden">
+                        <div class="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
+                             [style.width.%]="activeSkill.level"
+                             [class]="getProgressBarClass(activeSkill.level)">
+                               <div class="absolute inset-0 w-full h-full bg-white/20 animate-shimmer"></div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-template #emptyState>
+                <div class="flex flex-col items-center justify-center h-full text-center text-gray-500">
+                    <i class="fas fa-atom text-5xl mb-4 text-barca-blue/40 animate-spin-slow"></i>
+                    <p>Selecciona una tecnología para ver detalles</p>
+                </div>
+            </ng-template>
+
+            <div class="mt-8 pt-6 border-t border-white/5 grid grid-cols-4 gap-2 text-center">
+                 <div *ngFor="let stat of [
+                    {label: 'Código', val: stats.linesOfCode}, 
+                    {label: 'Proyectos', val: stats.projects}, 
+                    {label: 'Clientes', val: stats.clients}, 
+                    {label: 'Premios', val: stats.awards}
+                 ]">
+                     <div class="text-barca-gold font-bold text-lg">{{stat.val}}</div>
+                     <div class="text-[10px] text-gray-500 uppercase">{{stat.label}}</div>
+                 </div>
+            </div>
         </div>
       </div>
 
-      <div class="card-barca p-8" data-aos="fade-left">
-        <div *ngIf="activeSkill; else defaultContent" class="transition-opacity duration-300">
-          <div class="flex items-center gap-4 mb-4">
-            <i [class]="activeSkill.icon + ' text-4xl text-barca-gold'"></i>
-            <h3 class="text-3xl font-bold text-white">{{ activeSkill.name }}</h3>
-          </div>
-          <p class="text-gray-400 mb-6 h-12">{{ activeSkill.description }}</p>
-
-          <div class="w-full h-3 bg-barca-dark rounded-full overflow-hidden">
-            <div class="h-full rounded-full transition-all duration-500 ease-out"
-                 [style.width.%]="activeSkill.level"
-                 [class]="getProgressBarClass(activeSkill.level)">
-              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine"></div>
-            </div>
-          </div>
-          <p class="text-right mt-2 font-semibold text-barca-gold">{{ activeSkill.level }}% Dominio</p>
-        </div>
-
-        <ng-template #defaultContent>
-          <div class="text-center transition-opacity duration-300 h-[156px] flex flex-col justify-center items-center">
-            <i class="fas fa-hand-pointer text-4xl text-barca-blue mb-4"></i>
-            <h4 class="text-xl font-semibold text-white">Interactúa conmigo</h4>
-            <p class="text-gray-400">Pasa el cursor sobre una habilidad para ver los detalles.</p>
-          </div>
-        </ng-template>
-
-        <hr class="border-barca-blue/20 my-8">
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-          <div>
-            <p class="text-2xl font-bold text-barca-gold">{{ stats.linesOfCode }}</p>
-            <p class="text-gray-400 text-xs">Líneas de Código</p>
-          </div>
-          <div>
-            <p class="text-2xl font-bold text-barca-gold">{{ stats.projects }}+</p>
-            <p class="text-gray-400 text-xs">Proyectos</p>
-          </div>
-          <div>
-            <p class="text-2xl font-bold text-barca-gold">{{ stats.clients }}+</p>
-            <p class="text-gray-400 text-xs">Clientes</p>
-          </div>
-          <div>
-            <p class="text-2xl font-bold text-barca-gold">{{ stats.awards }}</p>
-            <p class="text-gray-400 text-xs">Premios</p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
