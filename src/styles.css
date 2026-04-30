@@ -3,6 +3,50 @@
 @import 'aos/dist/aos.css';
 @import '@fortawesome/fontawesome-free/css/all.min.css';
 
+:root.theme-blaugrana {
+  --bg-primary: #0a0e27;
+  --bg-secondary: #1a1d29;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --accent-1: #004D98; /* Azul */
+  --accent-2: #A50044; /* Rojo */
+  --accent-3: #EDBB00; /* Dorado */
+  --border-color: rgba(0, 77, 152, 0.3);
+}
+
+/* TEMA DARK (Premium, tipo Aceternity/Vercel) */
+:root.theme-dark {
+  --bg-primary: #09090b; /* Zinc 950 */
+  --bg-secondary: #18181b; /* Zinc 900 */
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --accent-1: #3b82f6; /* Azul brillante */
+  --accent-2: #8b5cf6; /* Púrpura/Neón */
+  --accent-3: #10b981; /* Esmeralda */
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* TEMA LIGHT (Limpio y minimalista) */
+:root.theme-light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f4f5; /* Zinc 100 */
+  --text-primary: #09090b;
+  --text-secondary: #52525b;
+  --accent-1: #004D98;
+  --accent-2: #A50044;
+  --accent-3: #EDBB00;
+  --border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Aplicar fondos y colores globales */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  overflow-x: hidden;
+}
+
 
 /* Variables CSS globales */
 :root {
