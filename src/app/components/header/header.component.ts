@@ -9,9 +9,10 @@
 // export class HeaderComponent {
 
 // }
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common'; // <-- 1. IMPORTA CommonModule
+import { ThemeService, Theme } from '../../shared/services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -34,14 +35,23 @@ import { CommonModule } from '@angular/common'; // <-- 1. IMPORTA CommonModule
   ]
 })
 export class HeaderComponent {
+  
+  themeService = inject(ThemeService);
   isMenuOpen = false;
   isScrolled = false;
+  isThemeMenuOpen = false;
+
+  availableThemes: {id: Theme; name: string; icon: string}[] =[
+    {id: 'blaugrana', name:'Personalizado', icon: 'fas fa-palette'},
+    {id: 'light', name: 'Claro', icon: 'fas fa-sun'},
+    {id: 'dark', name: 'Oscuro', icon: 'fas fa-moon'}
+  ]
   
   menuItems = [
     { name: 'Inicio', link: '#home' },
     { name: 'Sobre Mí', link: '#about' },
     { name: 'Habilidades', link: '#skills' },
-    { name: 'Proyectos', link: '#projects' },
+    // { name: 'Proyectos', link: '#projects' },
     // { name: 'Experiencia', link: '#experience' },
     // { name: 'Contacto', link: '#contact' }
   ];
@@ -57,5 +67,18 @@ export class HeaderComponent {
 
   closeMenu() {
     this.isMenuOpen = false;
+  }
+
+  toggleThemeMenu() {
+    this.isThemeMenuOpen = !this.isThemeMenuOpen;
+  }
+
+  selectTheme(themeId: Theme) {
+    this.themeService.setTheme(themeId);
+    this.isThemeMenuOpen = false;
+  }
+
+  changeTheme() {
+    this.themeService.toggleTheme();
   }
 }

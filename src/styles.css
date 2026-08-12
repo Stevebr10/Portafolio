@@ -3,6 +3,7 @@
 @import 'aos/dist/aos.css';
 @import '@fortawesome/fontawesome-free/css/all.min.css';
 
+/* 1. DEFINICIÓN DE TEMAS (El motor de colores) */
 :root.theme-blaugrana {
   --bg-primary: #0a0e27;
   --bg-secondary: #1a1d29;
@@ -11,10 +12,10 @@
   --accent-1: #004D98; /* Azul */
   --accent-2: #A50044; /* Rojo */
   --accent-3: #EDBB00; /* Dorado */
-  --border-color: rgba(0, 77, 152, 0.3);
+
 }
 
-/* TEMA DARK (Premium, tipo Aceternity/Vercel) */
+
 :root.theme-dark {
   --bg-primary: #09090b; /* Zinc 950 */
   --bg-secondary: #18181b; /* Zinc 900 */
@@ -23,38 +24,29 @@
   --accent-1: #3b82f6; /* Azul brillante */
   --accent-2: #8b5cf6; /* Púrpura/Neón */
   --accent-3: #10b981; /* Esmeralda */
-  --border-color: rgba(255, 255, 255, 0.1);
+
 }
 
-/* TEMA LIGHT (Limpio y minimalista) */
+
 :root.theme-light {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f4f4f5; /* Zinc 100 */
-  --text-primary: #09090b;
-  --text-secondary: #52525b;
+  --bg-primary: #f8fafc; /* Fondo general muy claro */
+  --bg-secondary: #ffffff; /* Tarjetas blancas */
+  --text-primary: #0f172a; /* Texto casi negro */
+  --text-secondary: #475569;
   --accent-1: #004D98;
   --accent-2: #A50044;
   --accent-3: #EDBB00;
-  --border-color: rgba(0, 0, 0, 0.1);
+
 }
 
-/* Aplicar fondos y colores globales */
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  transition: background-color 0.5s ease, color 0.5s ease;
-  overflow-x: hidden;
-}
-
-
-/* Variables CSS globales */
+/* 2. MAPEO MÁGICO DE TUS VARIABLES ACTUALES */
+/* Esto hace que tus componentes actuales se adapten automáticamente al tema */
 :root {
-  --barca-blue: #004D98;
-  --barca-red: #A50044;
-  --barca-gold: #EDBB00;
-  --barca-dark: #0a0e27;
-  --barca-dark-secondary: #1a1d29;
+  --barca-blue: var(--accent-1);
+  --barca-red: var(--accent-2);
+  --barca-gold: var(--accent-3);
+  --barca-dark: var(--bg-primary);
+  --barca-dark-secondary: var(--bg-secondary);
 }
 
 * {
@@ -67,102 +59,37 @@ html {
   scroll-behavior: smooth;
 }
 
+/* 3. ESTILOS GLOBALES BASE */
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, var(--barca-dark) 0%, #0d1126 100%);
-  color: #ffffff;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.5s ease, color 0.5s ease;
   overflow-x: hidden;
 }
 
-/* ===== CLASES PERSONALIZADAS ===== */
+/* ===== CLASES PERSONALIZADAS (Ya adaptadas) ===== */
 
 /* Backgrounds */
-.bg-barca-dark {
-  background-color: var(--barca-dark);
-}
-
-.bg-barca-dark\/90 {
-  background-color: rgba(10, 14, 39, 0.9);
-}
-
-.bg-barca-dark-secondary {
-  background-color: var(--barca-dark-secondary);
-}
-
-.bg-barca-blue {
-  background-color: var(--barca-blue);
-}
-
-.bg-barca-red {
-  background-color: var(--barca-red);
-}
-
-.bg-barca-gold {
-  background-color: var(--barca-gold);
-}
-
-.bg-barca-blue\/20 {
-  background-color: rgba(0, 77, 152, 0.2);
-}
-
-.bg-barca-red\/20 {
-  background-color: rgba(165, 0, 68, 0.2);
-}
-
-.bg-barca-gold\/20 {
-  background-color: rgba(237, 187, 0, 0.2);
-}
+.bg-barca-dark { background-color: var(--bg-primary); }
+.bg-barca-dark\/90 { background-color: color-mix(in srgb, var(--bg-primary) 90%, transparent); }
+.bg-barca-dark-secondary { background-color: var(--bg-secondary); }
+.bg-barca-blue { background-color: var(--barca-blue); }
+.bg-barca-red { background-color: var(--barca-red); }
+.bg-barca-gold { background-color: var(--barca-gold); }
 
 /* Text Colors */
-.text-barca-blue {
-  color: var(--barca-blue);
-}
-
-.text-barca-red {
-  color: var(--barca-red);
-}
-
-.text-barca-gold {
-  color: var(--barca-gold);
-}
-
-.text-barca-dark {
-  color: var(--barca-dark);
-}
-
-/* Border Colors */
-.border-barca-blue {
-  border-color: var(--barca-blue);
-}
-
-.border-barca-blue\/20 {
-  border-color: rgba(0, 77, 152, 0.2);
-}
-
-.border-barca-blue\/30 {
-  border-color: rgba(0, 77, 152, 0.3);
-}
-
-.border-barca-red {
-  border-color: var(--barca-red);
-}
-
-.border-barca-red\/30 {
-  border-color: rgba(165, 0, 68, 0.3);
-}
-
-.border-barca-gold {
-  border-color: var(--barca-gold);
-}
+.text-barca-blue { color: var(--barca-blue); }
+.text-barca-red { color: var(--barca-red); }
+.text-barca-gold { color: var(--barca-gold); }
+.text-barca-dark { color: var(--bg-primary); }
 
 /* Gradients */
 .gradient-barca {
   background: linear-gradient(135deg, var(--barca-blue) 0%, var(--barca-red) 100%);
 }
 
-.gradient-barca-reverse {
-  background: linear-gradient(135deg, var(--barca-red) 0%, var(--barca-blue) 100%);
-}
+
 
 .gradient-text-hero {
   background: linear-gradient(135deg, var(--barca-blue) 0%, var(--barca-red) 50%, var(--barca-gold) 100%);
@@ -176,27 +103,17 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+
 .hover-lift:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(165, 0, 68, 0.3);
+  box-shadow: 0 20px 40px color-mix(in srgb, var(--barca-red) 30%, transparent);
 }
-
-.hover\:text-barca-gold:hover {
-  color: var(--barca-gold);
-}
-
-.hover\:text-barca-gold\/80:hover {
-  color: rgba(237, 187, 0, 0.8);
-}
-
-.hover\:border-barca-gold:hover {
-  border-color: var(--barca-gold);
-}
+.hover\:text-barca-gold:hover { color: var(--barca-gold); }
 
 /* Buttons */
 .btn-barca {
   background: linear-gradient(135deg, var(--barca-blue) 0%, var(--barca-red) 100%);
-  color: white;
+  color: white; /* Siempre blanco para contraste */
   padding: 14px 32px;
   border-radius: 50px;
   font-weight: 600;
@@ -210,7 +127,7 @@ body {
 
 .btn-barca:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(165, 0, 68, 0.4);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--barca-red) 40%, transparent);
 }
 
 .btn-outline {
@@ -229,7 +146,7 @@ body {
 
 .btn-outline:hover {
   background: var(--barca-gold);
-  color: var(--barca-dark);
+  color: var(--bg-primary); /* Contraste dinámico */
   transform: scale(1.05);
 }
 
@@ -254,32 +171,13 @@ body {
   transform: translateY(-5px);
 }
 
-.social-icon-footer {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(0, 77, 152, 0.2);
-  color: var(--barca-blue);
-  font-size: 18px;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 77, 152, 0.3);
-}
 
-.social-icon-footer:hover {
-  background: linear-gradient(135deg, var(--barca-blue) 0%, var(--barca-red) 100%);
-  color: white;
-  border-color: transparent;
-  transform: translateY(-5px) rotate(5deg);
-}
 
 /* Cards */
 .card-barca {
-  background: rgba(26, 29, 41, 0.8);
+  background: color-mix(in srgb, var(--bg-secondary) 80%, transparent);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 77, 152, 0.3);
+  border: 1px solid color-mix(in srgb, var(--barca-blue) 30%, transparent);
   border-radius: 20px;
   padding: 30px;
   transition: all 0.3s ease;
@@ -288,7 +186,7 @@ body {
 .card-barca:hover {
   border-color: var(--barca-blue);
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 77, 152, 0.4);
+  box-shadow: 0 20px 40px color-mix(in srgb, var(--barca-blue) 40%, transparent);
 }
 
 /* Section Titles */
@@ -296,9 +194,10 @@ body {
   font-size: 3rem;
   font-weight: 800;
   text-align: center;
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
   position: relative;
   display: inline-block;
+  color: var(--text-primary);
 }
 
 .section-title::after {
@@ -313,50 +212,13 @@ body {
   border-radius: 2px;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--barca-dark);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--barca-blue), var(--barca-red));
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--barca-gold);
-}
 
 /* Animations */
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes shine {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.animate-shine {
-  animation: shine 2s infinite;
-}
+.animate-float { animation: float 3s ease-in-out infinite; }
 
 /* Utility Classes */
 .container {
@@ -364,24 +226,7 @@ body {
   margin: 0 auto;
 }
 
-/* Selection */
-::selection {
-  background-color: var(--barca-gold);
-  color: var(--barca-dark);
-}
 
-::-moz-selection {
-  background-color: var(--barca-gold);
-  color: var(--barca-dark);
-}
-
-/* Focus Visible */
-*:focus-visible {
-  outline: 2px solid var(--barca-gold);
-  outline-offset: 2px;
-}
-
-/* Line Clamp */
 .line-clamp-3 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -390,38 +235,3 @@ body {
   text-overflow: ellipsis;
 }
 
-/* Soporte para navegadores sin -webkit */
-@supports not (-webkit-line-clamp: 3) {
-  .line-clamp-3 {
-    display: block;
-    max-height: 4.5em; /* aproximadamente 3 líneas */
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
-/* Responsive Typography */
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
-  }
-}
-
-/* Responsive Container */
-@media (max-width: 1280px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .container {
-    max-width: 768px;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    max-width: 640px;
-  }
-}
