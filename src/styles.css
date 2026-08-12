@@ -8,7 +8,7 @@
   --bg-primary: #0a0e27;
   --bg-secondary: #1a1d29;
   --text-primary: #ffffff;
-  --text-secondary: #9ca3af;
+  --text-secondary: #ecedf0;
   --accent-1: #004D98; /* Azul */
   --accent-2: #A50044; /* Rojo */
   --accent-3: #EDBB00; /* Dorado */
@@ -31,8 +31,8 @@
 :root.theme-light {
   --bg-primary: #f8fafc; /* Fondo general muy claro */
   --bg-secondary: #ffffff; /* Tarjetas blancas */
-  --text-primary: #0f172a; /* Texto casi negro */
-  --text-secondary: #475569;
+  --text-primary: #0f172a; /* Texto casi negro */  
+  --text-secondary: #243346; /* 243346o */  
   --accent-1: #004D98;
   --accent-2: #A50044;
   --accent-3: #EDBB00;
