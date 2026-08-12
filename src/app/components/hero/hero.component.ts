@@ -10,7 +10,7 @@
 
 // }
 
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -20,7 +20,8 @@ import { CommonModule } from '@angular/common';
     CommonModule // 2. Añádelo aquí
   ],
   templateUrl: './hero.component.html',
-  styleUrls: ['./hero.component.css']
+  styleUrls: ['./hero.component.css'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HeroComponent {
   // Puedes agregar lógica adicional aquí

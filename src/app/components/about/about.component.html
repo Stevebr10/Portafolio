@@ -29,7 +29,9 @@
       <!-- Title Section -->
       <div class="mb-12" data-aos="fade-up">
         <h2 class="text-5xl md:text-7xl font-bold text-white mb-4">
-          <span class="gradient-text-hero"> Sobre Mí</span>
+          <span class="text-barca-gold">Sobre </span>
+          <!-- <span class="gradient-text-hero"> Sobre Mí</span> -->
+          <span class="gradient-text-hero"> Mí</span>
         </h2>
         <p class="text-white-500 text-xl leading-relaxed">
           Soy un desarrollador full stack con más de {{ yearsOfExperience }} años de experiencia 
@@ -48,8 +50,8 @@
               <i class="fas fa-envelope text-barca-blue text-2xl"></i>
             </div>
             <div>
-              <p class="text-xs text-gray-500 uppercase font-semibold mb-1">Email</p>
-              <p class="text-sm text-white font-medium break-all">brandon.onaguaman&#64;epn.edu.ec</p>
+              <p class="text-base text-gray-500 uppercase font-semibold mb-1">Email</p>
+              <p class="text-base text-white font-medium break-all">brandon.onaguaman&#64;epn.edu.ec</p>
             </div>
           </div>
         </div>
@@ -61,8 +63,8 @@
               <i class="fas fa-map-marker-alt text-barca-red text-2xl"></i>
             </div>
             <div>
-              <p class="text-xs text-gray-500 uppercase font-semibold mb-1">Ubicación</p>
-              <p class="text-sm text-white font-medium">Quito, Ecuador</p>
+              <p class="text-base text-gray-500 uppercase font-semibold mb-1">Ubicación</p>
+              <p class="text-base text-white font-medium">Quito, Ecuador</p>
             </div>
           </div>
         </div>
@@ -74,8 +76,8 @@
               <i class="fas fa-graduation-cap text-barca-gold text-2xl"></i>
             </div>
             <div>
-              <p class="text-xs text-gray-500 uppercase font-semibold mb-1">Educación</p>
-              <p class="text-sm text-white font-medium">Ing. Software - EPN</p>
+              <p class="text-base text-gray-500 uppercase font-semibold mb-1">Educación</p>
+              <p class="text-base text-white font-medium">Ing. Software - EPN</p>
             </div>
           </div>
         </div>
@@ -87,8 +89,8 @@
               <i class="fas fa-briefcase text-barca-blue text-2xl"></i>
             </div>
             <div>
-              <p class="text-xs text-gray-500 uppercase font-semibold mb-1">Experiencia</p>
-              <p class="text-sm text-white font-medium">{{ yearsOfExperience }}+ Años</p>
+              <p class="text-base text-gray-500 uppercase font-semibold mb-1">Experiencia</p>
+              <p class="text-base text-white font-medium">{{ yearsOfExperience }}+ Años</p>
             </div>
           </div>
         </div>
@@ -99,17 +101,17 @@
         <h3 class="text-2xl font-bold text-white mb-6">
           <span class="text-barca-gold">Intereses</span> & Habilidades
         </h3>
-        <div class="flex flex-wrap gap-3">
+        <div class="flex flex-wrap gap-4 justify-center items-center">
           <span *ngFor="let interest of interests" 
-                class="px-5 py-3 bg-barca-dark-secondary/80 backdrop-blur-sm border border-barca-blue/30 rounded-full text-sm text-gray-300 hover:border-barca-gold hover:text-barca-gold hover:bg-barca-dark-secondary transition-all duration-300 cursor-default">
-            <i [class]="interest.icon + ' mr-2'"></i>
+                class="px-6 py-4 bg-barca-dark-secondary/80 backdrop-blur-sm border border-barca-blue/30 rounded-full text-base text-gray-300 hover:border-barca-gold hover:text-barca-gold hover:bg-barca-dark-secondary transition-all duration-300 cursor-default flex items-center">
+            <i [class]="interest.icon + ' mr-3'"></i>
             {{ interest.name }}
           </span>
         </div>
       </div>
       <br>
       <!-- Stats Row -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12" data-aos="fade-up" data-aos-delay="600">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-12 justify-items-center content-center" data-aos="fade-up" data-aos-delay="600">
         <div class="text-center">
           <p class="text-4xl md:text-5xl font-bold text-barca-gold mb-2">{{ yearsOfExperience }}+</p>
           <p class="text-sm text-white-400 uppercase tracking-wider">Años de Experiencia</p>
@@ -118,10 +120,10 @@
           <p class="text-4xl md:text-5xl font-bold text-barca-blue mb-2">{{ completedProjects }}+</p>
           <p class="text-sm text-white-400 uppercase tracking-wider">Proyectos Completados</p>
         </div>
-        <div class="text-center">
+        <!-- <div class="text-center">
           <p class="text-4xl md:text-5xl font-bold text-barca-red mb-2">20+</p>
           <p class="text-sm text-white-400 uppercase tracking-wider">Clientes Satisfechos</p>
-        </div>
+        </div> -->
         <div class="text-center">
           <p class="text-4xl md:text-5xl font-bold text-barca-gold mb-2">15+</p>
           <p class="text-sm text-white-400 uppercase tracking-wider">Tecnologías</p>
