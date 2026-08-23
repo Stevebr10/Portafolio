@@ -33,7 +33,7 @@ interface Project {
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
-  filters: string[] = ['Todos', 'Web', 'Mobile', 'Backend', 'Full Stack'];
+  filters: string[] = ['Todos', 'Web', 'Mobile', 'Backend', ]; //'Full Stack'
   selectedFilter: string = 'Todos';
   
   projects: Project[] = [
@@ -43,18 +43,18 @@ export class ProjectsComponent implements OnInit {
       description: 'Aplicación web completa para gestión de música. Incluye un chat en tiempo real mediante WebSockets y una base de datos contenerizada para asegurar su portabilidad.',
       image: 'images/spotify.png',
       technologies: ['Angular', 'Python', 'PostgreSQL', 'Docker'],
-      demoUrl: 'https://youtube.com',
-      githubUrl: 'https://github.com/Stevebr10',
+      // demoUrl: 'https://youtube.com',
+      githubUrl: 'https://github.com/Stevebr10/ProyectoWebMusicApp',
       featured: true,
-      category: 'Web' // <-- Ahora el filtro Web funcionará
+      category: 'Web' 
     },
     {
       id: 2,
       title: 'Navegación en Interiores',
-      description: 'Aplicación móvil interactiva para facilitar la orientación. Integra hardware nativo del dispositivo (GPS, BLE, NFC) para localización precisa en tiempo real.',
-      image: 'assets/images/project-nav.jpg',
+      description: 'Aplicación móvil para facilitar la orientación en interiores. Integra hardware nativo del dispositivo (GPS, BLE, NFC) para localización precisa en tiempo real.',
+      image: 'images/PoliNav-TIC-BrandonOña-Portrait2.png',
       technologies: ['Angular', 'Capacitor', 'Hardware APIs'],
-      demoUrl: 'https://youtube.com',
+      demoUrl: 'https://epnecuador-my.sharepoint.com/:v:/g/personal/brandon_onaguaman_epn_edu_ec/IQCfX9n7iNTTRJSzOu1RhpbIAbX__Un6WKKuZ7HPdOizqaM?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=kwgET4',
       githubUrl: 'https://github.com/Stevebr10',
       featured: true,
       category: 'Mobile'
@@ -63,10 +63,10 @@ export class ProjectsComponent implements OnInit {
       id: 3,
       title: 'Microservicios - API Canciones',
       description: 'Refactorización de arquitectura monolítica a microservicios independientes. Mejora la escalabilidad en la gestión de usuarios, canciones y playlists.',
-      image: 'assets/images/project-api.jpg',
+      image: 'images/spotify1.jpg',
       technologies: ['Python', 'Docker', 'REST API'],
-      demoUrl: '',
-      githubUrl: 'https://github.com/Stevebr10',
+      // demoUrl: '',
+      githubUrl: 'https://github.com/Stevebr10/MicroserviceCRUDCanciones',
       featured: true,
       category: 'Backend'
     },
@@ -74,10 +74,10 @@ export class ProjectsComponent implements OnInit {
       id: 4,
       title: 'Gestor de Tareas Móvil',
       description: 'Aplicación nativa para la administración de actividades. Cuenta con operaciones CRUD completas, categorización dinámica y notificaciones automáticas.',
-      image: 'assets/images/project-tasks.jpg',
+      image: 'images/TaskImage1.png',
       technologies: ['Android Studio', 'Java', 'SQLite'],
-      demoUrl: 'https://youtube.com',
-      githubUrl: 'https://github.com/Stevebr10',
+      // demoUrl: 'https://youtube.com',
+      githubUrl: 'https://github.com/MOV-2024-B-SW-GR1/mov-sw-gr1-ona-guaman-brandon-steve/tree/main/02-ProyectoIIB/ProyectoIIB',
       featured: false,
       category: 'Mobile'
     },
@@ -85,10 +85,10 @@ export class ProjectsComponent implements OnInit {
       id: 5,
       title: 'Sistema de Gestión Hotelera',
       description: 'Aplicación de escritorio integral para la administración de reservas, control de disponibilidad y generación de reportes operativos.',
-      image: 'assets/images/project-hotel.jpg',
+      image: 'images/habitaciones.png',
       technologies: ['Java', 'NetBeans', 'SQL Server'],
-      demoUrl: 'https://youtube.com',
-      githubUrl: 'https://github.com/Stevebr10',
+      // demoUrl: 'https://youtube.com',
+      githubUrl: 'https://github.com/Stevebr10/Sistema-de-Gestion-Hotelera',
       featured: false,
       category: 'Backend'
     }
