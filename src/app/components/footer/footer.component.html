@@ -1,152 +1,126 @@
-<footer class="bg-barca-dark-secondary border-t border-barca-blue/20 relative overflow-hidden">
+<footer class="relative overflow-hidden border-t"
+        style="background-color: var(--bg-secondary); border-color: var(--border-color);">
+  <br>
   <!-- Background Effects -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute w-96 h-96 bg-barca-blue/5 rounded-full blur-3xl -bottom-48 left-0"></div>
-    <div class="absolute w-96 h-96 bg-barca-red/5 rounded-full blur-3xl -bottom-48 right-0"></div>
+  <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+    <div class="absolute w-96 h-96 rounded-full blur-[100px] -bottom-48 left-0" style="background-color: var(--accent-1);"></div>
+    <div class="absolute w-96 h-96 rounded-full blur-[100px] -bottom-48 right-0" style="background-color: var(--accent-2);"></div>
   </div>
 
   <div class="container mx-auto px-6 relative z-10">
     <!-- Main Footer Content -->
-    <div class="py-12 grid md:grid-cols-4 gap-8">
+    <div class="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+      
       <!-- Brand Column -->
-      <div class="md:col-span-1" data-aos="fade-up">
-        <div class="mb-4">
-          <h3 class="text-2xl font-bold gradient-text-hero">
-            <span class="text-barca-gold">&lt;</span>
-            <span class="text-white">TuNombre</span>
-            <span class="text-barca-gold">/&gt;</span>
+      <div class="lg:col-span-2" data-aos="fade-up">
+        <div class="mb-6">
+          <h3 class="text-3xl font-bold tracking-tight" style="color: var(--text-primary);">
+            <span style="color: var(--accent-3);">&lt;</span>
+            Brandon Oña
+            <span style="color: var(--accent-3);">/&gt;</span>
           </h3>
         </div>
-        <p class="text-gray-400 text-sm mb-6">
-          Desarrollador Full Stack apasionado por crear experiencias web excepcionales.
+        <p class="text-sm leading-relaxed max-w-sm mb-8" style="color: var(--text-secondary);">
+          Ingeniero de Software especializado en desarrollo Full Stack. 
+          Enfocado en la optimización de procesos, diseño de arquitecturas escalables y creación de experiencias web modernas.
         </p>
         
         <!-- Social Links -->
         <div class="flex gap-4">
-          <a *ngFor="let social of socialLinks" 
-             [href]="social.url" 
-             target="_blank"
-             rel="noopener noreferrer"
-             class="social-icon-footer"
-             [attr.aria-label]="social.name">
-            <i [class]="social.icon"></i>
-          </a>
+          @for (social of socialLinks; track social.name) {
+            <a [href]="social.url" 
+               target="_blank"
+               rel="noopener noreferrer"
+               class="social-icon-footer group"
+               [attr.aria-label]="social.name">
+              <i [class]="social.icon + ' group-hover:scale-110 transition-transform'"></i>
+            </a>
+          }
         </div>
       </div>
 
       <!-- Quick Links -->
       <div data-aos="fade-up" data-aos-delay="100">
-        <h4 class="text-white font-semibold text-lg mb-4">Enlaces Rápidos</h4>
-        <ul class="space-y-3">
-          <li *ngFor="let link of quickLinks">
-            <a [href]="link.url" 
-               class="text-gray-400 hover:text-barca-gold transition-colors duration-300 text-sm flex items-center gap-2">
-              <i class="fas fa-chevron-right text-xs"></i>
-              {{ link.name }}
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Services -->
-      <div data-aos="fade-up" data-aos-delay="200">
-        <h4 class="text-white font-semibold text-lg mb-4">Servicios</h4>
-        <ul class="space-y-3">
-          <li *ngFor="let service of services">
-            <a href="#contact" 
-               class="text-gray-400 hover:text-barca-gold transition-colors duration-300 text-sm flex items-center gap-2">
-              <i [class]="service.icon + ' text-barca-blue text-xs'"></i>
-              {{ service.name }}
-            </a>
-          </li>
+        <h4 class="font-bold text-lg mb-6 tracking-wide" style="color: var(--text-primary);">Navegación</h4>
+        <ul class="space-y-4">
+          @for (link of quickLinks; track link.name) {
+            <li>
+              <a [href]="link.url" 
+                 class="text-sm font-medium flex items-center gap-2 transition-all duration-300 hover:translate-x-2"
+                 style="color: var(--text-secondary);">
+                <i class="fas fa-arrow-right text-[10px]" style="color: var(--accent-3);"></i>
+                <span class="hover:text-[var(--accent-1)]">{{ link.name }}</span>
+              </a>
+            </li>
+          }
         </ul>
       </div>
 
       <!-- Contact Info -->
-      <div data-aos="fade-up" data-aos-delay="300">
-        <h4 class="text-white font-semibold text-lg mb-4">Contacto</h4>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3">
-            <i class="fas fa-envelope text-barca-gold mt-1"></i>
+      <div data-aos="fade-up" data-aos-delay="200">
+        <!-- CORRECCIÓN: 'fond-bold' cambiado a 'font-bold' -->
+        <h4 class="font-bold text-lg mb-6 tracking-wide" style="color: var(--text-primary);">Contacto</h4>
+        <ul class="space-y-5">
+          <li class="flex items-start gap-4">
+            <div class="mt-1 w-8 h-8 rounded-full flex items-center justify-center" style="background-color: color-mix(in srgb, var(--accent-1) 15%, transparent);">
+               <i class="fas fa-envelope text-sm" style="color: var(--accent-1);"></i>
+            </div>
+            
             <div>
-              <p class="text-gray-500 text-xs uppercase mb-1">Email</p>
-              <a href="mailto:tu@email.com" 
-                 class="text-gray-400 hover:text-barca-gold transition-colors duration-300 text-sm">
-                tuemail.com
+              <p class="text-xs uppercase font-bold tracking-wider mb-1" style="color: var(--text-primary);">Email</p>
+              <a href="mailto:stevebrandon1010@gmail.com" 
+                 class="text-sm transition-colors duration-300 hover:text-[var(--accent-1)] break-all"
+                 style="color: var(--text-secondary);">
+                stevebrandon1010<br>&#64;gmail.com
               </a>
             </div>
           </li>
-          <li class="flex items-start gap-3">
-            <i class="fas fa-phone text-barca-gold mt-1"></i>
+          <li class="flex items-start gap-4">
+            <div class="mt-1 w-8 h-8 rounded-full flex items-center justify-center" style="background-color: color-mix(in srgb, var(--accent-2) 15%, transparent);">
+              <!-- CORRECCIÓN: Icono cambiado a teléfono -->
+              <i class="fas fa-phone-alt text-sm" style="color: var(--accent-2);"></i>
+            </div>
             <div>
-              <p class="text-gray-500 text-xs uppercase mb-1">Teléfono</p>
-              <a href="tel:+593999999999" 
-                 class="text-gray-400 hover:text-barca-gold transition-colors duration-300 text-sm">
-                +593 99 999 9999
+              <p class="text-xs uppercase font-bold tracking-wider mb-1" style="color: var(--text-primary);">Teléfono</p>
+              <a href="tel:+593986483354" 
+                 class="transition-colors duration-300 text-sm
+                 text-[var(--text-secondary)] hover:text-[var(--accent-1)]">
+                +593 98 648 3354
               </a>
             </div>
           </li>
-          <li class="flex items-start gap-3">
-            <i class="fas fa-map-marker-alt text-barca-gold mt-1"></i>
+          <li class="flex items-start gap-4">
+           <div class="mt-1 w-8 h-8 rounded-full flex items-center justify-center" style="background-color: color-mix(in srgb, var(--accent-3) 15%, transparent);">
+
+              <i class="fas fa-map-marker-alt text-sm" style="color: var(--accent-3);"></i>
+            </div>
             <div>
-              <p class="text-gray-500 text-xs uppercase mb-1">Ubicación</p>
-              <p class="text-gray-400 text-sm">Quito, Ecuador</p>
+              <p class="text-xs uppercase font-bold tracking-wider mb-1" style="color: var(--text-primary);">Ubicación</p>
+              <p class="text-sm" style="color: var(--text-secondary);">Quito, Ecuador</p>
             </div>
           </li>
         </ul>
       </div>
     </div>
-
-    <!-- Newsletter Section -->
-    <div class="py-8 border-t border-barca-blue/20" data-aos="fade-up">
-      <div class="max-w-2xl mx-auto text-center">
-        <h4 class="text-white font-semibold text-xl mb-3">
-          Suscríbete a mi Newsletter
-        </h4>
-        <p class="text-gray-400 text-sm mb-6">
-          Recibe las últimas actualizaciones sobre proyectos y artículos de desarrollo web
-        </p>
-        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <input 
-            type="email" 
-            placeholder="tu@email.com"
-            class="flex-1 px-4 py-3 bg-barca-dark border border-barca-blue/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-barca-gold transition-colors duration-300">
-          <button type="submit" class="btn-barca whitespace-nowrap">
-            <i class="fas fa-paper-plane mr-2"></i>
-            Suscribirse
-          </button>
-        </form>
-      </div>
-    </div>
+    <br>
+    <br>
+    
 
     <!-- Bottom Bar -->
-    <div class="py-6 border-t border-barca-blue/20">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-        <!-- Copyright -->
-        <p class="text-gray-500 text-sm text-center md:text-left">
-          © {{ currentYear }} <span class="text-barca-gold font-semibold">Tu Nombre</span>. 
-          Todos los derechos reservados.
-        </p>
-
-        <!-- Additional Links -->
-        <div class="flex gap-6">
-          <a href="#" class="text-gray-500 hover:text-barca-gold transition-colors duration-300 text-sm">
-            Política de Privacidad
-          </a>
-          <a href="#" class="text-gray-500 hover:text-barca-gold transition-colors duration-300 text-sm">
-            Términos de Uso
-          </a>
-        </div>
-      </div>
+    <div class="py-6 border-t flex flex-col md:flex-row justify-between items-center gap-4" style="border-color: var(--border-color);">
+      <p class="text-sm text-center md:text-left font-medium" style="color: var(--text-secondary);">
+        © {{ currentYear }} <span style="color: var(--text-primary);" class="font-bold">Brandon Oña</span>. Todos los derechos reservados.
+      </p>
     </div>
 
     <!-- Back to Top Button -->
-    <button 
-      *ngIf="showScrollTop"
-      (click)="scrollToTop()"
-      class="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-br from-barca-blue to-barca-red rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300 shadow-lg z-50"
-      aria-label="Volver arriba">
-      <i class="fas fa-arrow-up"></i>
-    </button>
+    @if (showScrollTop) {
+      <button (click)="scrollToTop()"
+              class="fixed bottom-8 right-8 w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg hover:-translate-y-2 transition-all duration-300 z-50"
+              style="background: linear-gradient(135deg, var(--accent-1), var(--accent-2));"
+              aria-label="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+    }
   </div>
 </footer>

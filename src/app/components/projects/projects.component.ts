@@ -22,7 +22,7 @@ interface Project {
   demoUrl?: string;
   githubUrl?: string;
   featured: boolean;
-  category: string;
+  category: 'Web' | 'Mobile' | 'Backend' | 'Full Stack';
 }
 
 @Component({
@@ -33,105 +33,64 @@ interface Project {
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
-  filters: string[] = ['Todos', 'Web', 'Mobile', 'Full Stack', 'UI/UX'];
+  filters: string[] = ['Todos', 'Web', 'Mobile', 'Backend', ]; //'Full Stack'
   selectedFilter: string = 'Todos';
   
   projects: Project[] = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'Plataforma de comercio electrónico completa con carrito de compras, pasarela de pagos y panel de administración. Incluye gestión de inventario y análisis de ventas.',
-      image: 'https://placehold.co/600x400/004D98/ffffff?text=E-Commerce',
-      technologies: ['Angular', 'Node.js', 'MongoDB', 'Stripe'],
-      demoUrl: '#',
-      githubUrl: '#',
+      title: 'Spotify Clone - Arquitectura Web',
+      description: 'Aplicación web completa para gestión de música. Incluye un chat en tiempo real mediante WebSockets y una base de datos contenerizada para asegurar su portabilidad.',
+      image: 'images/spotify.png',
+      technologies: ['Angular', 'Python', 'PostgreSQL', 'Docker'],
+      // demoUrl: 'https://youtube.com',
+      githubUrl: 'https://github.com/Stevebr10/ProyectoWebMusicApp',
       featured: true,
-      category: 'Full Stack'
+      category: 'Web' 
     },
     {
       id: 2,
-      title: 'Task Management App',
-      description: 'Aplicación de gestión de tareas colaborativa con tableros Kanban, asignación de tareas, notificaciones en tiempo real y seguimiento de progreso.',
-      image: 'https://placehold.co/600x400/A50044/ffffff?text=Task+App',
-      technologies: ['React', 'Firebase', 'Tailwind CSS'],
-      demoUrl: '#',
-      githubUrl: '#',
+      title: 'Navegación en Interiores',
+      description: 'Aplicación móvil para facilitar la orientación en interiores. Integra hardware nativo del dispositivo (GPS, BLE, NFC) para localización precisa en tiempo real.',
+      image: 'images/PoliNav-TIC-BrandonOña-Portrait2.png',
+      technologies: ['Angular', 'Capacitor', 'Hardware APIs'],
+      demoUrl: 'https://epnecuador-my.sharepoint.com/:v:/g/personal/brandon_onaguaman_epn_edu_ec/IQCfX9n7iNTTRJSzOu1RhpbIAbX__Un6WKKuZ7HPdOizqaM?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=kwgET4',
+      githubUrl: 'https://github.com/Stevebr10',
       featured: true,
-      category: 'Web'
+      category: 'Mobile'
     },
     {
       id: 3,
-      title: 'Fitness Tracker Mobile',
-      description: 'Aplicación móvil para seguimiento de ejercicios y nutrición. Incluye planes personalizados, seguimiento de calorías y estadísticas detalladas.',
-      image: 'https://placehold.co/600x400/EDBB00/0a0e27?text=Fitness+Tracker',
-      technologies: ['React Native', 'Redux', 'Node.js'],
-      demoUrl: '#',
+      title: 'Microservicios - API Canciones',
+      description: 'Refactorización de arquitectura monolítica a microservicios independientes. Mejora la escalabilidad en la gestión de usuarios, canciones y playlists.',
+      image: 'images/spotify1.jpg',
+      technologies: ['Python', 'Docker', 'REST API'],
+      // demoUrl: '',
+      githubUrl: 'https://github.com/Stevebr10/MicroserviceCRUDCanciones',
+      featured: true,
+      category: 'Backend'
+    },
+    {
+      id: 4,
+      title: 'Gestor de Tareas Móvil',
+      description: 'Aplicación nativa para la administración de actividades. Cuenta con operaciones CRUD completas, categorización dinámica y notificaciones automáticas.',
+      image: 'images/TaskImage1.png',
+      technologies: ['Android Studio', 'Java', 'SQLite'],
+      // demoUrl: 'https://youtube.com',
+      githubUrl: 'https://github.com/MOV-2024-B-SW-GR1/mov-sw-gr1-ona-guaman-brandon-steve/tree/main/02-ProyectoIIB/ProyectoIIB',
       featured: false,
       category: 'Mobile'
     },
     {
-      id: 4,
-      title: 'Dashboard Analytics',
-      description: 'Dashboard interactivo para visualización de datos con gráficos en tiempo real, filtros avanzados y exportación de reportes.',
-      image: 'https://placehold.co/600x400/0a0e27/ffffff?text=Dashboard',
-      technologies: ['Vue.js', 'D3.js', 'Express'],
-      demoUrl: '#',
-      githubUrl: '#',
-      featured: false,
-      category: 'Web'
-    },
-    {
       id: 5,
-      title: 'Social Media Dashboard',
-      description: 'Panel de control para gestión de redes sociales con programación de publicaciones, análisis de métricas y generación de reportes automáticos.',
-      image: 'https://placehold.co/600x400/004D98/ffffff?text=Social+Dashboard',
-      technologies: ['Angular', 'TypeScript', 'PostgreSQL', 'Redis'],
-      demoUrl: '#',
-      githubUrl: '#',
-      featured: true,
-      category: 'Full Stack'
-    },
-    {
-      id: 6,
-      title: 'Portfolio Design System',
-      description: 'Sistema de diseño completo con componentes reutilizables, guía de estilos y documentación interactiva para proyectos empresariales.',
-      image: 'https://placehold.co/600x400/A50044/ffffff?text=Design+System',
-      technologies: ['Figma', 'Storybook', 'React', 'Styled Components'],
-      demoUrl: '#',
+      title: 'Sistema de Gestión Hotelera',
+      description: 'Aplicación de escritorio integral para la administración de reservas, control de disponibilidad y generación de reportes operativos.',
+      image: 'images/habitaciones.png',
+      technologies: ['Java', 'NetBeans', 'SQL Server'],
+      // demoUrl: 'https://youtube.com',
+      githubUrl: 'https://github.com/Stevebr10/Sistema-de-Gestion-Hotelera',
       featured: false,
-      category: 'UI/UX'
-    },
-    {
-      id: 7,
-      title: 'Real Estate Platform',
-      description: 'Plataforma inmobiliaria con búsqueda avanzada, tours virtuales 360°, calculadora de hipotecas y sistema de citas con agentes.',
-      image: 'https://placehold.co/600x400/EDBB00/0a0e27?text=Real+Estate',
-      technologies: ['Next.js', 'Prisma', 'PostgreSQL', 'Mapbox'],
-      demoUrl: '#',
-      githubUrl: '#',
-      featured: false,
-      category: 'Full Stack'
-    },
-    {
-      id: 8,
-      title: 'Weather Forecast App',
-      description: 'Aplicación del clima con pronósticos detallados, mapas interactivos, alertas meteorológicas y diseño responsive.',
-      image: 'https://placehold.co/600x400/0a0e27/ffffff?text=Weather+App',
-      technologies: ['React', 'OpenWeather API', 'Leaflet'],
-      demoUrl: '#',
-      githubUrl: '#',
-      featured: false,
-      category: 'Web'
-    },
-    {
-      id: 9,
-      title: 'Learning Management System',
-      description: 'Sistema de gestión de aprendizaje con cursos en línea, evaluaciones, certificados y seguimiento de progreso de estudiantes.',
-      image: 'https://placehold.co/600x400/004D98/ffffff?text=LMS',
-      technologies: ['Angular', 'NestJS', 'MongoDB', 'AWS S3'],
-      demoUrl: '#',
-      featured: false,
-      category: 'Full Stack'
+      category: 'Backend'
     }
   ];
   
@@ -170,11 +129,11 @@ export class ProjectsComponent implements OnInit {
 
   getFilterIcon(filter: string): string {
     const icons: { [key: string]: string } = {
-      'Todos': 'fas fa-th',
+      'Todos': 'fas fa-th-large',
       'Web': 'fas fa-globe',
       'Mobile': 'fas fa-mobile-alt',
-      'Full Stack': 'fas fa-layer-group',
-      'UI/UX': 'fas fa-pencil-ruler'
+      'Backend': 'fas fa-server',
+      'Full Stack': 'fas fa-layer-group'
     };
     return icons[filter] || 'fas fa-folder';
   }

@@ -50,16 +50,94 @@
       </ul>
 
       <!-- Right Side Buttons -->
-      <div class="hidden lg:flex items-center gap-4">
-        <!-- <a href="#contact" class="nav-icon">
+      <!-- <div class="hidden lg:flex items-center gap-4">
+        <a href="#contact" class="nav-icon">
           <i class="fas fa-user"></i>
           <span class="ml-1">Login</span>
-        </a> -->
+        </a>
         <a href="#projects" class="cta-button">
           <i class="fas fa-briefcase mr-2"></i>
           Ver Proyectos
         </a>
         <button class="lang-button">ES</button>
+      </div> -->
+      <div class="hidden lg:flex items-center gap-4">
+        
+        <a href="#projects" class="cta-button">
+          <i class="fas fa-briefcase mr-2"></i>
+          Ver Proyectos
+        </a>
+
+        <!-- NUEVO BOTÓN DE TEMA SIMPLIFICADO -->
+        <!-- <button (click)="changeTheme()" 
+                
+                class="w-10 h-10 rounded-full border-2 hover:opacity-70 transition-opacity duration-300 flex items-center justify-center"
+                title="Cambiar tema visual">
+          
+          @if (themeService.currentTheme() === 'light') {
+            <i class="fas fa-sun text-lg"></i>
+          } @else if (themeService.currentTheme() === 'dark') {
+            <i class="fas fa-moon text-lg"></i>
+          } @else {
+            <i class="fas fa-palette text-lg"></i>
+          }
+
+        </button> -->
+
+        <!-- CUSTOM THEME SELECTOR -->
+        <div class="relative">
+          <!-- Botón que activa el menú -->
+          <button (click)="toggleThemeMenu()" 
+                  style="color: var(--text-primary); border-color: var(--text-primary);"
+                  class="flex items-center justify-between w-15 h-7 px-3 gap-3 rounded-full border-2 hover:opacity-70 transition-opacity duration-300"
+                  title="Seleccionar tema visual">
+            
+            <!-- Icono dinámico según el tema actual -->
+            @if (themeService.currentTheme() === 'light') {
+              <i class="fas fa-sun text-sm"></i>
+            } @else if (themeService.currentTheme() === 'dark') {
+              <i class="fas fa-moon text-sm"></i>
+            } @else {
+              <i class="fas fa-palette text-sm"></i>
+            }
+            
+            <!-- Flechita indicadora de dropdown -->
+            <i class="fas fa-chevron-down text-xs transition-transform duration-300" 
+               [class.rotate-180]="isThemeMenuOpen"></i>
+          </button>
+
+          <!-- Menú Desplegable -->
+          @if (isThemeMenuOpen) {
+            <div class="absolute right-0 mt-3 w-48 rounded-xl shadow-2xl overflow-hidden z-50 border backdrop-blur-md"
+                 style="background-color: color-mix(in srgb, var(--bg-secondary) 95%, transparent); border-color: var(--border-color);">
+              <ul class="py-2 focus:outline-none">
+                
+                @for (theme of availableThemes; track theme.id) {
+                  <li>
+                    <button (click)="selectTheme(theme.id)"
+                            class="w-full text-left px-4 py-2.5 flex items-center gap-3 transition-colors duration-200 hover:bg-black/5 dark:hover:bg-white/10"
+                            style="color: var(--text-primary);">
+                      
+                      <!-- Icono de la opción -->
+                      <i [class]="theme.icon + ' w-5 text-center'"></i>
+                      
+                      <!-- Nombre de la opción -->
+                      <span class="text-sm font-medium">{{ theme.name }}</span>
+                      
+                      <!-- Checkmark si es la opción activa -->
+                      @if (themeService.currentTheme() === theme.id) {
+                        <i class="fas fa-check ml-auto text-barca-gold text-xs"></i>
+                      }
+                    </button>
+                  </li>
+                }
+
+              </ul>
+            </div>
+          }
+        </div>
+
+        <!-- <button class="lang-button dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-barca-dark">ES</button> -->
       </div>
 
       <!-- Mobile Menu Button -->
