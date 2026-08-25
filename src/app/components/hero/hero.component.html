@@ -109,7 +109,7 @@
   
   <!-- Background Effects sutiles -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute w-[600px] h-[600px] rounded-full blur-[120px] -top-48 -left-48 animate-pulse" 
+    <div class="absolute w-[600px] h-[600px] rounded-full blur-[120px] -top-48 -left-48" 
          style="background-color: color-mix(in srgb, var(--accent-1) 15%, transparent);"></div>
   </div>
 
@@ -172,12 +172,33 @@
       <!-- Ocultamos la etiqueta "Press and drag to interact" nativa de Spline usando un contenedor relativo -->
       <div class="relative w-full h-[400px] md:h-[600px] flex items-center justify-center -mt-16 lg:-mt-24" 
            data-aos="fade-left" data-aos-delay="200">
-        
-        <!-- Web Component de Spline -->
-        <spline-viewer 
-          class="w-full h-full"
-          url="https://prod.spline.design/K9Y-L-xj6I2XMFsx/scene.splinecode">
-        </spline-viewer>
+
+        @defer (on timer(4000ms)) {
+           <!-- Web Component de Spline -->
+          <spline-viewer 
+            class="w-full h-full"
+            url="https://prod.spline.design/K9Y-L-xj6I2XMFsx/scene.splinecode">
+          </spline-viewer>
+        } @placeholder {
+          <div class="w-full h-full flex items-center justify-center relative overflow-hidden rounded-2xl group border border-barca-blue/30">
+             <img 
+              src="images/foto-perfil2.png" 
+              alt="Modelo 3D estático del robot" 
+              class="w-full h-full object-cover object-center rounded-2xl transition-transform duration-500 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-barca-dark/50 to-transparent"></div>
+          </div>
+        }
+        @loading {
+          <div class="w-full h-full flex items-center justify-center relative rounded-2xl border border-barca-blue/30">
+            <img 
+              src="images/foto-perfil2.png" 
+              alt="Cargando modelo 3D interactivo..." 
+              class="w-full h-full object-cover object-center rounded-2xl opacity-50"
+            />
+            <div class="absolute w-16 h-16 border-4 border-t-transparent border-[var(--accent-1)] rounded-full animate-spin mb-4"></div>
+          </div>
+        }
         
       </div>
     </div>
