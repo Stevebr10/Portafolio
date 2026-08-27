@@ -61,9 +61,9 @@
         </a>
         <button class="lang-button">ES</button>
       </div> -->
-      <div class="hidden lg:flex items-center gap-4">
+      <div class="flex items-center gap-4">
         
-        <a href="#projects" class="cta-button">
+        <a href="#projects" class="cta-button hidden lg:inline-flex">
           <i class="fas fa-briefcase mr-2"></i>
           Ver Proyectos
         </a>
@@ -137,12 +137,9 @@
           }
         </div>
 
-        <!-- <button class="lang-button dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-barca-dark">ES</button> -->
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button (click)="toggleMenu()" 
-              class="lg:hidden text-barca-dark focus:outline-none"
+        <button (click)="toggleMenu()" 
+              style="color: var(--text-primary);"
+              class="lg:hidden focus:outline-none transition-colors duration-300"
               aria-label="Toggle menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path *ngIf="!isMenuOpen" 
@@ -157,11 +154,18 @@
                 d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
+
+        <!-- <button class="lang-button dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-barca-dark">ES</button> -->
+      </div>
+
+      <!-- Mobile Menu Button -->
+      
     </div>
 
     <!-- Mobile Menu -->
     <div *ngIf="isMenuOpen" 
-         class="lg:hidden pb-4 border-t border-gray-200 mt-2"
+         class="lg:hidden absolute top-full left-0 w-full pb-4 border-t shadow-xl z-50 transition-colors duration-500"
+         style="background-color: var(--bg-primary); border-color: var(--border-color);"
          [@slideDown]>
       <ul class="space-y-2 mt-4">
         <li *ngFor="let item of menuItems">
@@ -179,7 +183,7 @@
         </li>
         <li>
           <a href="#projects" class="block">
-            <button class="cta-button w-full">
+            <button class="cta-button w-full inline-flex justify-center">
               <i class="fas fa-briefcase mr-2"></i>
               Ver Proyectos
             </button>

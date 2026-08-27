@@ -60,7 +60,7 @@ interface Interest {
 export class AboutComponent {
   // Estadísticas
   yearsOfExperience: number = 2;
-  completedProjects: number = 10;
+  completedProjects: number = 5;
   awards: number = 5;
   clients: number = 10;
 
