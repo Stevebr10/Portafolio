@@ -27,7 +27,10 @@ export class HeroComponent {
   readonly splineState = signal<'idle' | 'loading' | 'ready' | 'error'>('idle');
 
   async loadSpline(): Promise<void> {
-    if (this.splineState() !== 'idle' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (
+      this.splineState() !== 'idle' ||
+      window.matchMedia('(prefers-reduced-motion: reduce), (max-width: 767px)').matches
+    ) {
       return;
     }
 

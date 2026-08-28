@@ -1,0 +1,9 @@
+.spline-load-button {
+	display: inline-block;
+}
+
+@media (max-width: 767px) {
+	.spline-load-button {
+		display: none;
+	}
+}

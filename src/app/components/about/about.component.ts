@@ -66,7 +66,7 @@ export class AboutComponent {
 
   // Información personal
   currentPosition: string = 'Ingeniero de Software';
-  email: string = 'brandon.onaguaman@epn.edu.ec';
+  email: string = 'stevebrandon1010@gmail.com';
   location: string = 'Quito, Ecuador';
   education: string = 'Ingeniería en Software';
 
