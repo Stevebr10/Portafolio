@@ -9,7 +9,7 @@
 // export class HeaderComponent {
 
 // }
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, DestroyRef, inject, NgZone } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common'; // <-- 1. IMPORTA CommonModule
 import { ThemeService, Theme } from '../../shared/services/theme.service';
@@ -37,6 +37,8 @@ import { ThemeService, Theme } from '../../shared/services/theme.service';
 export class HeaderComponent {
   
   themeService = inject(ThemeService);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly ngZone = inject(NgZone);
   isMenuOpen = false;
   isScrolled = false;
   isThemeMenuOpen = false;
@@ -56,9 +58,23 @@ export class HeaderComponent {
     // { name: 'Contacto', link: '#contact' }
   ];
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    this.isScrolled = window.scrollY > 50;
+  constructor() {
+    this.ngZone.runOutsideAngular(() => {
+      const updateScrollState = () => {
+        const nextState = window.scrollY > 50;
+
+        if (nextState !== this.isScrolled) {
+          this.ngZone.run(() => {
+            this.isScrolled = nextState;
+          });
+        }
+      };
+
+      window.addEventListener('scroll', updateScrollState, { passive: true });
+      this.destroyRef.onDestroy(() => {
+        window.removeEventListener('scroll', updateScrollState);
+      });
+    });
   }
 
   toggleMenu() {

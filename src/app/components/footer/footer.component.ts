@@ -1,5 +1,5 @@
 
-import { Component, HostListener } from '@angular/core';
+import { Component, DestroyRef, inject, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 
 
@@ -27,6 +27,8 @@ interface Service {
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly ngZone = inject(NgZone);
   currentYear: number = new Date().getFullYear();
   showScrollTop: boolean = false;
 
@@ -55,9 +57,23 @@ export class FooterComponent {
     // { name: 'SEO & Performance', icon: 'fas fa-chart-line' }
   ];
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    this.showScrollTop = window.scrollY > 400;
+  constructor() {
+    this.ngZone.runOutsideAngular(() => {
+      const updateScrollState = () => {
+        const nextState = window.scrollY > 400;
+
+        if (nextState !== this.showScrollTop) {
+          this.ngZone.run(() => {
+            this.showScrollTop = nextState;
+          });
+        }
+      };
+
+      window.addEventListener('scroll', updateScrollState, { passive: true });
+      this.destroyRef.onDestroy(() => {
+        window.removeEventListener('scroll', updateScrollState);
+      });
+    });
   }
 
   scrollToTop() {
