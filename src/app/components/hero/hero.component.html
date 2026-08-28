@@ -160,7 +160,7 @@
              style="color: var(--text-primary); border-color: color-mix(in srgb, var(--text-primary) 30%, transparent);">
             <i class="fab fa-linkedin-in"></i>
           </a>
-          <a href="mailto:brandon.onaguaman@epn.edu.ec" 
+          <a href="mailto:stevebrandon1010@gmail.com" 
              class="w-12 h-12 rounded-full border-2 flex items-center justify-center text-xl transition-all duration-300 hover:scale-110"
              style="color: var(--text-primary); border-color: color-mix(in srgb, var(--text-primary) 30%, transparent);">
             <i class="fas fa-envelope"></i>
@@ -181,12 +181,12 @@
         } @else {
           <div class="w-full h-full flex items-center justify-center relative overflow-hidden rounded-2xl group border border-barca-blue/30">
              <img 
-              src="images/foto-perfil2.png" 
+              src="images/foto-perfil3.png" 
               alt="Vista previa del modelo 3D" 
               loading="eager"
               fetchpriority="high"
               decoding="async"
-              class="w-full h-full object-cover object-center rounded-2xl transition-transform duration-500 group-hover:scale-105"
+              class="w-[600px] h-[650px] object-cover object-center rounded-2xl transition-transform duration-500 group-hover:scale-105"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-barca-dark/50 to-transparent"></div>
             @if (splineState() === 'loading') {
@@ -199,8 +199,8 @@
                 No se pudo cargar el modelo 3D.
               </p>
             } @else if (splineState() === 'idle') {
-              <button type="button" (click)="loadSpline()"
-                      class="absolute bottom-5 btn-barca text-sm"
+                    <button type="button" (click)="loadSpline()"
+                      class="spline-load-button absolute bottom-5 btn-barca text-sm"
                       aria-label="Cargar modelo 3D interactivo">
                 Ver modelo 3D
               </button>
