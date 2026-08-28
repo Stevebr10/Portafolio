@@ -16,7 +16,7 @@
     <div class="h-8"></div>
 
     <div class="w-full flex justify-center" data-aos="fade-up" data-aos-delay="100">
-      <p class="text-gray-400 text-lg text-center block whitespace-nowrap min-w-max mx-auto"
+      <p class="text-gray-400 text-lg text-center block mx-auto"
         style="color: var(--text-primary);">
         Una selección de proyectos que demuestran mi pasión por el desarrollo y el diseño.
       </p>
@@ -45,7 +45,7 @@
           <img [src]="project.image" [alt]="project.title"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
           <div
-            class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+            class="project-actions absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
             <a *ngIf="project.demoUrl" [href]="project.demoUrl" target="_blank" class="social-icon">
               <i class="fas fa-external-link-alt"></i>
             </a>
