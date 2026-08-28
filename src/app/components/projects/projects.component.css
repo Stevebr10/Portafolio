@@ -65,6 +65,19 @@
   transform: translateY(-10px);
 }
 
+@media (hover: none) {
+  .project-actions {
+    opacity: 1;
+    background-color: rgb(0 0 0 / 15%) !important;
+  }
+
+  .project-actions .social-icon {
+    background: linear-gradient(135deg, var(--barca-blue) 0%, var(--barca-red) 100%);
+    color: white;
+    border-color: transparent;
+  }
+}
+
 /* No es necesario definir la clase '.line-clamp-3' aquí.
   Tailwind CSS la crea automáticamente cuando usas la clase 'line-clamp-3' en tu HTML.
   Asegúrate de que el plugin de line-clamp esté habilitado en tu tailwind.config.js si usas una versión anterior a la 3.0.
